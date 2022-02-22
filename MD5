@@ -1,0 +1,17 @@
+fd7fe52ca4497ca98fac84ecf93eee74 *DESCRIPTION
+89dccd45468c2e5ca11bb315d3d648c4 *NAMESPACE
+9e6b2522eb59d3e5ad91da5ca0d4175a *R/CEOdata.R
+a0d719494fc2f3cc1753bd6224b84b2b *R/CEOmeta.R
+c58e0cc2b108f602bb10241a7b961d07 *R/globals.R
+6b819d734add4ce7ece718fd2702f90e *R/help.R
+1b1f36b14112963e5ac0eb01e18455f3 *R/zzz.R
+14ad71b730e4a8ba4375f1b2ed5c0b0e *build/vignette.rds
+f6e0faba222b8b014256d028d51b71e8 *inst/doc/using_CEOdata.R
+55262ab3f694bd08694bf52951778295 *inst/doc/using_CEOdata.Rmd
+eb8acf5f19c4929d460c2fe8a3cb9fa8 *inst/doc/using_CEOdata.html
+dbe6a196e40d80f08c748094958ae661 *man/CEOdata.Rd
+440d1ea642171cc6510ec91ba87c5b94 *man/CEOmeta.Rd
+ac93ba19ed365ee6709d64766fee4006 *man/read.ceo.json.Rd
+83f90ced70695a9d123bd3dd954fca90 *man/the.Rd
+dd7a7e273b5109f3104da7f0b0a8f1fc *tests/testthat/test_size_barometer.R
+55262ab3f694bd08694bf52951778295 *vignettes/using_CEOdata.Rmd

@@ -1,0 +1,235 @@
+---
+title: Using the CEOdata package
+author: Xavier Fernández-i-Marín
+date: "`r format(Sys.time(), '%d/%m/%Y')` - Version `r packageVersion('CEOdata')`"
+classoption: a4paper,justified
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the CEOdata package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(CEOdata)
+```
+
+
+CEOdata is a package that facilitates the incorporation of microdata (individual
+responses) of public opinion polls in Catalonia into `R`, as performed by the "Centre
+d'Estudis d'Opinió" (CEO, Opinion Studies Center). It has basically two main
+functions with a separate purpose:
+
+- **`CEOdata()`**: that provides the _data_ of the surveys directly into `R`.
+- **`CEOmeta()`**: that allows the user to inspect the details of the available
+  surveys (_metadata_) and to search for specific topics and get the survey
+  details.
+
+# `CEOdata()`: Get the survey data
+
+The most comprehensive kind of data on catalan public opinion is the
+"Barometer", that can be retrieved by default by the main function `CEOdata()`.
+
+```{r message = FALSE}
+library(CEOdata)
+d <- CEOdata()
+```
+
+This provides a cleaned and merged version of all the available Barometers,
+providing easy acces to the following number of responses and variables:
+```{r}
+dim(d)
+```
+
+```{r}
+d
+```
+
+```{r}
+names(d)[1:50]
+```
+
+
+## Specific barometers or time frames
+
+`CEOdata()` allows you to select specific Barometers, by providing their internal register in the `reo` argument. 
+The reo is the internal name that the CEO uses, and stands for "Registre
+d'Estudis d'Opinió" (register of opinion studies), and is the main identificator
+of the survey, also present in the table of meta data. Although many of them are
+numbers, some have a number, a slash and another number, and therefore a
+character vector must be passed. Only a single REO can be passed, as it is not
+guaranteed that different data matrices share any column, and may refer to very
+different topics.
+
+For instance, to get only the data of the study with register "746" (corresponding to March 2013):
+
+```{r}
+d746 <- CEOdata(reo = "746")
+d746
+```
+
+The function `CEOdata()` also allows to restrict the whole set of barometers based on specific time frames defined by a date with the arguments `date_start` and `date_end` using the YYYY-MM-DD format.
+
+```{r}
+b2019 <- CEOdata(date_start = "2019-01-01", date_end = "2019-12-31")
+b2019
+```
+
+
+## Convenience variables
+
+By default `CEOdata()` incorporates new variables to the original matrix. Variables that are created for convenience, such as the date of the survey. 
+The CEO data not always provides a day of the month. 
+In that case, 28 is used. These variables appear at the end of the dataset and can be distinguished from the original CEO variables because only the first letter is capitalized.
+
+```{r}
+tail(names(d))
+```
+
+
+# `CEOmeta()`: Access to the metadata of studies and surveys
+
+The function `CEOmeta` allows to easily retrieve, search and restrict by time
+the list of all the surveys produced by the CEO, which amounts to more than a
+thousand as of end of 2021.
+
+When called alone, the function downloads the latest version of the metadata
+published by the center, in a transparent way, and caching its content so that
+any subsequent calls in the same `R` session do not need to download it again.
+
+```{r}
+CEOmeta()
+```
+
+## Search for specific topics though keywords
+
+The first relevant argument for `CEOmeta()` is `search`, which is a built-in
+simple search engine that goes through the columns of the metadata containing
+potential descriptive information () and returns the studies that contain such
+keyword.
+
+```{r}
+CEOmeta(search = "Medi ambient")
+```
+
+
+It is also possible to pass more than one value to `search`, so that the search
+includes them (either one of them OR any other).
+
+```{r}
+CEOmeta(search = c("Medi ambient", "Municipi"))
+```
+
+## Restrict by time
+
+Metadata can be retrieved for a specific period of time, by using the arguments
+`date_start` and `date_end`, also using the YYYY-MM-DD format. In this case the
+dates that are taken into account are dates where the study gets into the
+records, not the fieldwork dates.
+
+```{r}
+CEOmeta(date_start = "2019-01-01", date_end = "2019-12-31")
+```
+
+
+## Browse the CEO site
+
+In addition, to the search engine and the restriction by time `CEOmeta()` also allows 
+to automatically open the relevant URLs at the CEO domain that contain the details 
+of the studies gathered with the function. This can be done setting the `browse`
+argument to `TRUE`. However, there is a soft limitation of only 10 URLs to be
+opened, unless the user forces to really open all of them (proceed with caution,
+as this may open many tabs in your browser and leave your computer out of RAM in
+some scenarios of RAM black holes, such as Chrome).
+
+```{r, eval = FALSE}
+CEOmeta(search = "Medi ambient a", browse = TRUE)
+```
+
+It is also possible to specify an alternative language, so the default catalan
+pages are substituted by the automatic translations provided by Apertium (for
+Occitan/Aranese) or Google Translate.
+
+```{r, eval = FALSE}
+CEOmeta(search = "Medi ambient a", browse = TRUE, browse_translate = "de")
+```
+
+
+
+# Extensions
+
+Once you have retrieved the data of the surveys, it is trivial to work with
+them. For instance, to get the overall number of males and females surveyed:
+
+```{r, message = FALSE, warning = FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+
+```{r}
+d |>
+  count(SEXE)
+```
+
+
+Or to trace the proportion of females surveyed over time, across barometers:
+
+```{r prop-females, fig.width = 8, fig.height = 4, fig.cap = 'Proportion of females in the different Barometers.'}
+d |>
+  group_by(BOP_NUM) |>
+  summarize(propFemales = length(which(SEXE == "Dona")) / n()) |>
+  ggplot(aes(x = BOP_NUM, y = propFemales, group = 1)) +
+  geom_point() +
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  expand_limits(y = c(0, 1))
+```
+
+
+Alternatively, the metadata can alse be explored using the different topics
+(tags, called "Descriptors") covered as reported by the CEO.
+
+```{r tags, fig.width = 6, fig.height = 6, fig.cap = 'Prevalence of topics covered.'}
+tags <- CEOmeta() |>
+  separate_rows(Descriptors, sep = ";") |>
+  mutate(tag = factor(stringr::str_trim(Descriptors))) |>
+  select(REO, tag)
+
+tags |>
+  group_by(tag) |>
+  count() |>
+  filter(n > 5) |>
+  ggplot(aes(x = n, y = reorder(tag, n))) +
+    geom_point() +
+    ylab("Topic")
+```
+
+
+Or by examining the time periods where there has been fieldwork in
+quantitative studies, since 2018.
+
+```{r fieldwork, fig.width = 8, fig.height = 10, fig.cap = 'Fieldwork periods.'}
+CEOmeta() |>
+  filter(`Dia inici treball de camp` > "2018-01-01") |>
+  ggplot(aes(xmin = `Dia inici treball de camp`,
+             xmax = `Dia final treball de camp`,
+             y = reorder(REO, `Dia final treball de camp`))) +
+  geom_linerange() +
+  xlab("Date") + ylab("Surveys with fieldwork") +
+  theme(axis.ticks.y = element_blank(), axis.text.y = element_blank())
+```
+
+
+
+# Development and acknowledgement
+
+The development of `CEOdata` (track changes, propose improvements, report bugs) can be followed at [github](https://github.com/ceopinio/CEOdata/).
+
+
+If using the date and the package, please cite and acknowledge properly the CEO and the package, respectively.
+
+<!-- # References -->
+
+
