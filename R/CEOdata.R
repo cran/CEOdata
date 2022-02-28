@@ -40,32 +40,52 @@ CEOdata <- function(kind = "barometer",
     file.presential.barometer <- "Microdades anonimitzada fusio presencial.sav"
     # Process barometer merged from 2014
     if (kind == "barometer") {
+      message("Downloading the barometer.")
       tmp <- tempfile()
-      download.file(url.presential.barometer, tmp)
-      file <- unzip(tmp, file.presential.barometer)
-      d <- haven::read_spss(file)
-      if (file.exists(file)) {
-        unlink(file)
+      try({download.value <- download.file(url.presential.barometer, tmp)}, silent = TRUE)
+      if (exists(quote(download.value))) {
+        if (download.value == 0) { # success downloading the file
+          file <- unzip(tmp, file.presential.barometer)
+          message("Converting the original data into R. This may take a while.")
+          d <- haven::read_spss(file)
+          if (file.exists(file)) {
+            unlink(file)
+          }
+        }
+      } else {
+        message("A problem downloading the barometer file has occurred. The server may be temporarily down, or the file name has changed. Please try again later or open an issue at https://github.com/ceopinio/CEOdata indicating 'Problem with barometer'")
+        return(NULL)
       }
     }
     # Process barometer merged until 2013
     if (kind == "barometer_until_2013") {
-      # This must be fixed because the original file as of 211027 is not a zip file, but a RAR file
-      download.file(url.phone.barometer, file.phone.barometer.rar)
-      system("unrar e 2013_Microdades_anonimitzades_fusio_cine_telf.zip")
-      file <- file.phone.barometer
-      d <- haven::read_spss(file)
-      names(d) <- toupper(names(d))
-      # Add variable REO
-      d <- d |>
-        dplyr::mutate(REO, as.numeric(stringr::str_extract(BOP_NUM, "...$")))
-      if (file.exists(file)) {
-        unlink(file)
-      }
-      if (file.exists(file.phone.barometer.rar)) {
-        unlink(file.phone.barometer.rar)
+      message("Downloading the barometer until 2013.")
+      try({download.value <- download.file(url.phone.barometer, file.phone.barometer.rar)}, silent = TRUE)
+      if (exists(quote(download.value))) {
+        if (download.value == 0) { # success downloading the file
+          # This must be fixed because the original file as of 211027 is not a zip file, but a RAR file
+          message("Uncompressing the original downloaded file. This may take a while.")
+          system("unrar e 2013_Microdades_anonimitzades_fusio_cine_telf.zip")
+          file <- file.phone.barometer
+          message("Converting the original data into R. This may take a while.")
+          d <- haven::read_spss(file)
+          names(d) <- toupper(names(d))
+          # Add variable REO
+          d <- d |>
+            dplyr::mutate(REO = as.numeric(stringr::str_extract(BOP_NUM, "...$")))
+          if (file.exists(file)) {
+            unlink(file)
+          }
+          if (file.exists(file.phone.barometer.rar)) {
+            unlink(file.phone.barometer.rar)
+          }
+        }
+      } else {
+        message("A problem downloading the barometer until 2013 file has occurred. The server may be temporarily down, or the file name has changed. Please try again later or open an issue at https://github.com/ceopinio/CEOdata indicating 'Problem with barometer until 2013'")
+        return(NULL)
       }
     }
+    message("Post-processing the data. This may take a while.")
     # Arrange the barometer to process
     # Arrange factors
     if (!raw) { # Transform SPSS labels into proper R factors
@@ -77,10 +97,17 @@ CEOdata <- function(kind = "barometer",
     }
     # Add complementary variables (date, ...)
     if (complementary_variables) {
-      d <- d |>
-        dplyr::mutate(Data = as.Date(paste(ifelse(is.na(DIA), 28, DIA),
-                                           sprintf("%02d", MES),
-                                           ANY, sep = "-")))
+      if (kind == "barometer_until_2013") {
+        d <- d |>
+          dplyr::mutate(Data = as.Date(paste(28,
+                                             sprintf("%02d", MES),
+                                             ANY, sep = "-")))
+      } else {
+        d <- d |>
+          dplyr::mutate(Data = as.Date(paste(ifelse(is.na(DIA), 28, DIA),
+                                             sprintf("%02d", MES),
+                                             ANY, sep = "-")))
+      }
     }
     #
     # Filter by dates

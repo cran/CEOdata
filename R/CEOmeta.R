@@ -19,36 +19,41 @@ getCEOmetadata <- function() {
   #  # CSV, TSV, ... all fail because there are newlines in the data
   #  # Therefore a more structured system is required: JSON
   url.ceo.table <- "https://analisi.transparenciacatalunya.cat/api/views/m5mb-xt5e/rows.json?accessType=DOWNLOAD&sorting=true"
-  ceo.meta <- jsonlite::fromJSON(url.ceo.table)
-  ceo.meta.table <- ceo.meta[[1]]
-  ceo.table <- ceo.meta[[2]]
-  ceo.table <- t(as.data.frame(lapply(ceo.table, read.ceo.json)))
-  ceo.table <- as_tibble(as.data.frame(ceo.table))
-  names(ceo.table) <- ceo.meta.table[[1]]$columns$name
-  # Manually transform non-ASCII column names so that this can be packaged
-  # and pass through CRAN
-  # But only for variables that are going to be somewhat transformed
-  names(ceo.table)[grep("Enlla.$", names(ceo.table))] <- "Enllac"
-  names(ceo.table)[grep("Enlla. matriu de dades$", names(ceo.table))] <- "Enllac matriu de dades"
-  names(ceo.table)[grep("M.tode de recollida de dades$", names(ceo.table))] <- "Metode de recollida de dades"
-  names(ceo.table)[grep(".mbit territorial", names(ceo.table))] <- "Ambit territorial"
-  names(ceo.table)[grep("T.tol enquesta", names(ceo.table))] <- "Titol enquesta"
-  names(ceo.table)[grep("T.tol estudi", names(ceo.table))] <- "Titol estudi"
-  CEOmeta <- ceo.table |>
-    dplyr::select(-c(sid, id, position, created_at,
-                     created_meta, updated_at,
-                     updated_meta, meta)) |>
-    dplyr::mutate(REO = factor(REO, levels = rev(REO))) |>
-    dplyr::mutate(`Metodologia enquesta` = factor(`Metodologia enquesta`)) |>
-    dplyr::mutate(`Metode de recollida de dades` = factor(`Metode de recollida de dades`)) |>
-    dplyr::mutate(`Ambit territorial` = factor(`Ambit territorial`)) |>
-    dplyr::mutate(`Dia inici treball de camp` = as.Date(stringr::str_sub(`Dia inici treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
-    dplyr::mutate(`Dia final treball de camp` = as.Date(stringr::str_sub(`Dia final treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
-    dplyr::mutate(`Any d'entrada al REO` = as.integer(`Any d'entrada al REO`, format = "")) |>
-    dplyr::mutate(`Data d'alta al REO` = as.Date(`Data d'alta al REO`, format = "")) |>
-    dplyr::mutate(`Mostra estudis quantitatius` = as.numeric(`Mostra estudis quantitatius`)) |>
-    dplyr::mutate(Cost = as.numeric(Cost))
-  return(CEOmeta)
+  try({ceo.meta <- jsonlite::fromJSON(url.ceo.table)}, silent = TRUE)
+  if (exists(quote(ceo.meta))) {
+    ceo.meta.table <- ceo.meta[[1]]
+    ceo.table <- ceo.meta[[2]]
+    ceo.table <- t(as.data.frame(lapply(ceo.table, read.ceo.json)))
+    ceo.table <- as_tibble(as.data.frame(ceo.table))
+    names(ceo.table) <- ceo.meta.table[[1]]$columns$name
+    # Manually transform non-ASCII column names so that this can be packaged
+    # and pass through CRAN
+    # But only for variables that are going to be somewhat transformed
+    names(ceo.table)[grep("Enlla.$", names(ceo.table))] <- "Enllac"
+    names(ceo.table)[grep("Enlla. matriu de dades$", names(ceo.table))] <- "Enllac matriu de dades"
+    names(ceo.table)[grep("M.tode de recollida de dades$", names(ceo.table))] <- "Metode de recollida de dades"
+    names(ceo.table)[grep(".mbit territorial", names(ceo.table))] <- "Ambit territorial"
+    names(ceo.table)[grep("T.tol enquesta", names(ceo.table))] <- "Titol enquesta"
+    names(ceo.table)[grep("T.tol estudi", names(ceo.table))] <- "Titol estudi"
+    CEOmeta <- ceo.table |>
+      dplyr::select(-c(sid, id, position, created_at,
+                       created_meta, updated_at,
+                       updated_meta, meta)) |>
+      dplyr::mutate(REO = factor(REO, levels = rev(REO))) |>
+      dplyr::mutate(`Metodologia enquesta` = factor(`Metodologia enquesta`)) |>
+      dplyr::mutate(`Metode de recollida de dades` = factor(`Metode de recollida de dades`)) |>
+      dplyr::mutate(`Ambit territorial` = factor(`Ambit territorial`)) |>
+      dplyr::mutate(`Dia inici treball de camp` = as.Date(stringr::str_sub(`Dia inici treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
+      dplyr::mutate(`Dia final treball de camp` = as.Date(stringr::str_sub(`Dia final treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
+      dplyr::mutate(`Any d'entrada al REO` = as.integer(`Any d'entrada al REO`, format = "")) |>
+      dplyr::mutate(`Data d'alta al REO` = as.Date(`Data d'alta al REO`, format = "")) |>
+      dplyr::mutate(`Mostra estudis quantitatius` = as.numeric(`Mostra estudis quantitatius`)) |>
+      dplyr::mutate(Cost = as.numeric(Cost))
+    return(CEOmeta)
+  } else {
+    message("A problem downloading the metadata has occurred. The server may be temporarily down, or the file name has changed. Please try again later or open an issue at https://github.com/ceopinio/CEOdata indicating 'Problem with metadata file'")
+    return(NULL)
+  }
 }
 
 
