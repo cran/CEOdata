@@ -11,7 +11,9 @@ if (base::getRversion() >= "2.15.1") {
     "Ambit territorial", 
     "Dia inici treball de camp", "Dia final treball de camp",
     "Any d'entrada al REO", "Data d'alta al REO", "Mostra estudis quantitatius",
+    "Enllac matriu de dades",
     "Cost",
+    "Variable", "Original.Variable",
     "is_haven_labelled"  # from CEOdata
   ))
 }

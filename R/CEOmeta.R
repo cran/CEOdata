@@ -43,12 +43,13 @@ getCEOmetadata <- function() {
       dplyr::mutate(`Metodologia enquesta` = factor(`Metodologia enquesta`)) |>
       dplyr::mutate(`Metode de recollida de dades` = factor(`Metode de recollida de dades`)) |>
       dplyr::mutate(`Ambit territorial` = factor(`Ambit territorial`)) |>
-      dplyr::mutate(`Dia inici treball de camp` = as.Date(stringr::str_sub(`Dia inici treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
-      dplyr::mutate(`Dia final treball de camp` = as.Date(stringr::str_sub(`Dia final treball de camp`, 1, 10), format = "%Y-%m-%d")) |>
+      dplyr::mutate(`Dia inici treball de camp` = as.Date(stringr::str_sub(`Dia inici treball de camp`, 1L, 10L), format = "%Y-%m-%d")) |>
+      dplyr::mutate(`Dia final treball de camp` = as.Date(stringr::str_sub(`Dia final treball de camp`, 1L, 10L), format = "%Y-%m-%d")) |>
       dplyr::mutate(`Any d'entrada al REO` = as.integer(`Any d'entrada al REO`, format = "")) |>
-      dplyr::mutate(`Data d'alta al REO` = as.Date(`Data d'alta al REO`, format = "")) |>
+      dplyr::mutate(`Data d'alta al REO` = as.Date(stringr::str_sub(`Data d'alta al REO`, 1L, 10L), format = "%Y-%m-%d")) |>
       dplyr::mutate(`Mostra estudis quantitatius` = as.numeric(`Mostra estudis quantitatius`)) |>
-      dplyr::mutate(Cost = as.numeric(Cost))
+      dplyr::mutate(Cost = as.numeric(Cost)) |>
+      dplyr::mutate(microdata_available = ifelse(is.na(`Enllac matriu de dades`), FALSE, TRUE)) 
     return(CEOmeta)
   } else {
     message("A problem downloading the metadata has occurred. The server may be temporarily down, or the file name has changed. Please try again later or open an issue at https://github.com/ceopinio/CEOdata indicating 'Problem with metadata file'")
@@ -60,13 +61,14 @@ getCEOmetadata <- function() {
 #' Import metadata from the "Centre d'Estudis d'Opinio"
 #'
 #' Easy and convenient access to the metadata of the "Centre
-#' d'Estudis d'Opinio", the catalan institution for polling and public opinion.
+#' d'Estudis d'Opinio", the Catalan institution for polling and public opinion.
 #' It allows to search for specific terms to obtain the details of the datasets available
 #'
 #' @encoding UTF-8
-#' @param search Character vector with kewords to look for within several columns of the CEO metadata. Each element of the vector is strictly evaluated (all words are considered to be found in the format they appear, like in "AND"), while by using several elements in the vector the search works like an "OR" clause. Lower or upper cases are not considered.
-#' @param date_start Character vector with a starting date ("DD-MM-YYYY") for the data.
-#' @param date_end Character vector with an end date ("DD-MM-YYYY") for the data.
+#' @param reo Character vector of length one that allows to get the metadata only of a specific REO (Registre d'Estudis d'Opinio, the internal register ID used by the CEO) to download. When not NULL it has precedence with the search, date_start and date_end arguments.
+#' @param search Character vector with keywords to look for within several columns of the CEO metadata (title, summary, objectives and tags -descriptors-). Each element of the vector is strictly evaluated (all words are considered to be found in the format they appear, like in "AND"), while by using several elements in the vector the search works like an "OR" clause. Lower or upper cases are not considered.
+#' @param date_start Character vector with a starting date ("YYYY-MM-DD") for the data.
+#' @param date_end Character vector with an end date ("YYYY-MM-DD") for the data.
 #' @param browse Logical value. When turned to TRUE, the browser opens the URLs of the required surveys. Only a maximum of 10 entries are opened.
 #' @param browse_translate When opening the relevant entries in the browser (browse must be TRUE), use automatic translation to the language specified using Google Translate ('oc' for Occitan/Aranese, 'de' to German, 'en' to English, 'eu' to Basque, 'gl' for Galician or 'sp' to Spanish).
 #' @param browse_force Logical value. When TRUE it overcomes the limitation of only opening a maximum of 10 URLs. Use it with caution.
@@ -90,8 +92,12 @@ getCEOmetadata <- function() {
 #'
 #' # Search for all registers starting in 2020
 #' CEOmeta(date_start = "2020-01-01")
+#'
+#' # Get the entry for a specific study (REO) and open its description in a browser
+#' CEOmeta(reo = "746", browse = TRUE)
 #'}
 CEOmeta <- function(
+  reo = NULL,
   search = NULL, date_start = NA, date_end = NA,
   browse = FALSE, browse_translate = NULL, browse_force = FALSE) {
   # If search is not empty, return parts according to searched fields
@@ -102,7 +108,13 @@ CEOmeta <- function(
   #
   # Limit by search
   #
-  if (!is.null(search)) {
+  if (!is.null(reo)) {
+    if (!is.character(reo)) {
+      stop("The 'reo' argument must be character.")
+    }
+    d <- d |>
+      filter(REO == reo)
+  } else if (!is.null(search)) {
     if (!is.character(search)) {
       stop("The 'search' argument must be character.")
     }
@@ -159,9 +171,9 @@ CEOmeta <- function(
                                   "&_x_tr_sl=ca&_x_tr_tl=",
                                   browse_translate)
           }
-          browseURL(url.to.open)
-          Sys.sleep(0.05)
         }
+        browseURL(url.to.open)
+        Sys.sleep(0.05)
       }
     }
   }

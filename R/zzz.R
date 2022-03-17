@@ -3,7 +3,7 @@ CEOdataStartupMessage <- function()
   msg <- c(paste0("CEOdata version ", 
            utils::packageVersion("CEOdata")),
            "\nThis package needs a working Internet connection to effectively run.",
-           "\nPlease acknowledge the CEO in your publications.\nType \"vignette('using_CEOdata')\" for help.")
+           "\nPlease acknowledge the CEO in your publications.\nType \"vignette('using_CEOdata')\" or \"vignette('cheatsheet')\" for basic help.")
   return(msg)
 }
 

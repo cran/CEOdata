@@ -8,7 +8,7 @@
 #' @encoding UTF-8
 #' @references \url{http://xavier-fim.net/packages/CEOdata/}.
 #' @importFrom haven read_spss as_factor
-#' @importFrom dplyr mutate_if %>% mutate filter select as_tibble
+#' @importFrom dplyr mutate_if %>% mutate filter select as_tibble bind_rows
 #' @importFrom utils download.file unzip browseURL
 #' @importFrom stringr str_detect str_extract str_sub str_trim
 #' @importFrom urltools domain

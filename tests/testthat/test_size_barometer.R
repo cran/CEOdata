@@ -1,6 +1,6 @@
 require(testthat)
 devtools::load_all("../..")
-d <- CEOdata(raw = TRUE, complementary_variables = FALSE)
+d <- CEOdata(raw = TRUE, extra_variables = FALSE)
 context("Check that the merged barometer contains the correct number of observations and variables.")
 
 dims.barometer <- dim(d)

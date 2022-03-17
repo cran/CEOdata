@@ -1,21 +1,26 @@
 #' Import datasets / microdata from the "Centre d'Estudis d'Opinio"
 #'
 #' Easy and convenient access to the datasets / microdata of the "Centre
-#' d'Estudis d'Opinio", the catalan institution for polling and public opinion.
+#' d'Estudis d'Opinio", the Catalan institution for polling and public opinion.
 #' The package uses the data stored in the servers of the CEO and returns it in
 #' a tidy format (tibble).
+#' 
+#' It works either by specifying the kind of merged barometer (using the
+#' \code{kind} argument), or either providing a singular study (using the
+#' \code{reo} argument).
 #'
 #' @encoding UTF-8
-#' @param kind Character vector with the sort of microdata required. Defaults to "barometer", that contains the whole set of Barometers from 2014 (presential interviews). "barometer_until_2013" contains the interviews performed by phone until 2013, with a somewhat different questionnaire and structure. For such dataset you need a third-party software installed in your computer to be able to uncompress the RAR original file.
-#' @param reo Character vector of length one that allows to get the dataset of a specific REO (Registre d'Estudis d'Opinio, the internal register ID used by the CEO) to download. By default (when \code{reo = NA}) it uses the \code{kind} argument.
-#' @param raw Logical value to indicate if SPSS labels are transformed into factors. Defaults to TRUE. Otherwise it returns the matrices as imported by haven::read_spss(). Does not apply to data from singular REOs.
-#' @param complementary_variables Logical value as to whether include (default) complementary variables such as date (Data). Defaults to TRUE. Names of such new variables only use upper case in the first letter. Complementary variables are added at the end. Does not apply to data from singular REOs.
-#' @param date_start Character vector with a starting date ("DD-MM-YYYY") for the data.
-#' @param date_end Character vector with an end date ("DD-MM-YYYY") for the data.
+#' @param kind Character vector with the sort of microdata required. Defaults to "barometer", that contains the whole set of Barometers from 2014 (presential interviews). "barometer_until_2013" contains the interviews performed by phone until 2013, with a somewhat different questionnaire and structure. For such dataset you need a third-party software installed in your computer to be able to uncompress the RAR original file. It is the option by default. But if a specific reo study is requested in the \code{reo} argument, then the \code{kind} argument does not apply anymore and only a specific study is retrieved.
+#' @param reo Character vector of length one that allows to get the dataset of a specific REO study (Registre d'Estudis d'Opinio, the internal register ID used by the CEO) to download. By default (when \code{reo = NA}) it uses the \code{kind} argument. Not all the studies carried on by the CEO (and therefore listed in the \code{CEOmeta()} function call) have microdata available. Only the ones that return TRUE to the column \code{microdata_available} in \code{CEOmeta()}.
+#' @param raw Logical value to indicate if SPSS labels are transformed into factors. Defaults to FALSE. Otherwise, when TRUE, it returns the matrices as imported by haven::read_spss() without modification. Does not apply to data from singular REOs, only to barometers retrieved using \code{kind}.
+#' @param extra_variables Logical value as to whether include (default) complementary variables such as date (Data). Defaults to TRUE. Names of such new variables only use upper case in the first letter. Extra variables are added at the end. Does not apply to data from singular REOs, only to barometers retrieved using \code{kind}.
+#' @param date_start Character vector with a starting date ("YYYY-MM-DD") for the data. It only applies to the barometers retrieved using \code{kind}, not to other studies.
+#' @param date_end Character vector with an end date ("YYYY-MM-DD") for the data. It only applies to the barometers retrieved using \code{kind}, not to other studies.
 #' @export
 #' @return A tibble with the individuals' responses to the questionnaire retrieved.
 #' @examples
 #'\dontrun{
+#' Get the merged barometer from 2014, by default (assume kind = "barometer").
 #' d <- CEOdata()
 #'
 #' # Get the number of individuals surveyed and the number of variables recorded.
@@ -23,11 +28,14 @@
 #'
 #' # Get the identifiers of the different Barometers retrieved
 #' unique(d$BOP_NUM)
+#'
+#' Get a specific study
+#' d746 <- CEOdata(reo = "746")
 #'}
 CEOdata <- function(kind = "barometer",
                     reo = NA,
                     raw = FALSE,
-                    complementary_variables = TRUE,
+                    extra_variables = TRUE,
                     date_start = NA, date_end = NA) {
   if (is.na(reo)) {
     #
@@ -95,18 +103,19 @@ CEOdata <- function(kind = "barometer",
       d <- d |>
         dplyr::mutate_if(is_haven_labelled, haven::as_factor, levels = "labels")
     }
-    # Add complementary variables (date, ...)
-    if (complementary_variables) {
+    # Add extra variables (date, ...)
+    if (extra_variables) {
       if (kind == "barometer_until_2013") {
         d <- d |>
-          dplyr::mutate(Data = as.Date(paste(28,
+          dplyr::mutate(Data = as.Date(paste(ANY,
                                              sprintf("%02d", MES),
-                                             ANY, sep = "-")))
+                                             28, sep = "-")))
       } else {
         d <- d |>
-          dplyr::mutate(Data = as.Date(paste(ifelse(is.na(DIA), 28, DIA),
+          dplyr::mutate(Data = as.Date(paste(ANY,
                                              sprintf("%02d", MES),
-                                             ANY, sep = "-")))
+                                             ifelse(is.na(DIA), 28, DIA),
+                                             sep = "-")))
       }
     }
     #

@@ -2,8 +2,10 @@
 
 export(CEOdata)
 export(CEOmeta)
+export(CEOsearch)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,as_tibble)
+importFrom(dplyr,bind_rows)
 importFrom(dplyr,filter)
 importFrom(dplyr,mutate)
 importFrom(dplyr,mutate_if)
