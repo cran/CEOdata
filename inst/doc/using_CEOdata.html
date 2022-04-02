@@ -347,7 +347,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Using the CEOdata package</h1>
 <h4 class="author">Xavier Fernández-i-Marín</h4>
-<h4 class="date">17/03/2022 - Version 1.0.2</h4>
+<h4 class="date">02/04/2022 - Version 1.0.3</h4>
 
 
 
@@ -670,7 +670,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## # … with 804 more rows</code></pre>
 <p>Equivalently, the use of <code>where = &quot;values&quot;</code> provides with a tidy object containing the value labels. Notice that in this case the variable names are repeated to accommodate each of the different value labels.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d, <span class="dt">where =</span> <span class="st">&quot;values&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 10,263 × 2
+<pre><code>## # A tibble: 11,955 × 2
 ##    Variable Value        
 ##    &lt;fct&gt;    &lt;fct&gt;        
 ##  1 BOP_NUM  Març 14 - 746
@@ -683,7 +683,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  8 BOP_NUM  Oct. 16 -835 
 ##  9 BOP_NUM  Març 17 -850 
 ## 10 BOP_NUM  Juny 17 -857 
-## # … with 10,253 more rows</code></pre>
+## # … with 11,945 more rows</code></pre>
 <p>Just like with the <code>CEOmeta()</code>, <code>CEOsearch()</code> has a simple built-in search facility that allows to retrieve only the rows that match a specific keyword(s). In the following example, we restrict the variables to those that contain “edat” (age).</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d, <span class="dt">keyword =</span> <span class="st">&quot;edat&quot;</span>)</span></code></pre></div>
 <pre><code>## Looking for entries with: edat</code></pre>
@@ -728,7 +728,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d) <span class="op">|</span><span class="er">&gt;</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">CEOsearch</span>(d, <span class="dt">where =</span> <span class="st">&quot;values&quot;</span>))</span></code></pre></div>
 <pre><code>## Joining, by = &quot;Variable&quot;</code></pre>
-<pre><code>## # A tibble: 10,328 × 3
+<pre><code>## # A tibble: 12,020 × 3
 ##    Variable       Label                               Value        
 ##    &lt;chr&gt;          &lt;chr&gt;                               &lt;fct&gt;        
 ##  1 PONDERA        Coeficients de ponderació           &lt;NA&gt;         
@@ -741,7 +741,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  8 BOP_NUM        Número d&#39;ordre del baròmetre        Oct. 15 -804 
 ##  9 BOP_NUM        Número d&#39;ordre del baròmetre        Feb. 16 -816 
 ## 10 BOP_NUM        Número d&#39;ordre del baròmetre        Juny 16 -826 
-## # … with 10,318 more rows</code></pre>
+## # … with 12,010 more rows</code></pre>
 </div>
 <div id="development-and-acknowledgement" class="section level1">
 <h1>Development and acknowledgement</h1>
