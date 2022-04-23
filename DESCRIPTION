@@ -1,7 +1,7 @@
 Package: CEOdata
 Title: Datasets of the CEO (Centre d'Estudis d'Opinio) for Opinion
         Polls in Catalonia
-Version: 1.0.3
+Version: 1.0.4
 Authors@R: 
     person("Xavier", "Fernández-i-Marín", , "xavier.fim@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9522-8870"))
@@ -18,9 +18,9 @@ Encoding: UTF-8
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr, R.rsp
 NeedsCompilation: no
-Packaged: 2022-04-02 09:46:23 UTC; xavier
+Packaged: 2022-04-23 20:19:57 UTC; xavier
 Author: Xavier Fernández-i-Marín [aut, cre]
     (<https://orcid.org/0000-0002-9522-8870>)
 Maintainer: Xavier Fernández-i-Marín <xavier.fim@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-04-02 10:20:02 UTC
+Date/Publication: 2022-04-24 00:00:08 UTC
