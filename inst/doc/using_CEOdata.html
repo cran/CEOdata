@@ -28,46 +28,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
 });
 </script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -79,55 +64,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -136,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -348,46 +339,59 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Using the CEOdata package</h1>
 <h4 class="author">Xavier Fernández-i-Marín</h4>
-<h4 class="date">17/05/2022 - Version 1.2.0.1</h4>
+<h4 class="date">01/02/2023 - Version 1.3.0.1</h4>
 
 
 
-<p>CEOdata is a package that facilitates the incorporation of microdata (individual responses) of public opinion polls in Catalonia into <code>R</code>, as performed by the “Centre d’Estudis d’Opinió” (CEO, Opinion Studies Center). It has basically three main functions with a separate purpose:</p>
+<p>CEOdata is a package that facilitates the incorporation of microdata
+(individual responses) of public opinion polls in Catalonia into
+<code>R</code>, as performed by the “Centre d’Estudis d’Opinió” (CEO,
+Opinion Studies Center). It has basically three main functions with a
+separate purpose:</p>
 <ul>
-<li><strong><code>CEOdata()</code></strong>: that provides the <em>data</em> of the surveys directly into <code>R</code>.</li>
-<li><strong><code>CEOmeta()</code></strong>: that allows the user to inspect the details of the available surveys (<em>metadata</em>) and to search for specific topics and get the survey details.</li>
-<li><strong><code>CEOsearch()</code></strong>: that allows the user to search for variables, variable labels and value labels within a survey data gathered using the <code>CEOdata()</code> function.</li>
+<li><strong><code>CEOdata()</code></strong>: that provides the
+<em>data</em> of the surveys directly into <code>R</code>.</li>
+<li><strong><code>CEOmeta()</code></strong>: that allows the user to
+inspect the details of the available surveys (<em>metadata</em>) and to
+search for specific topics and get the survey details.</li>
+<li><strong><code>CEOsearch()</code></strong>: that allows the user to
+search for variables, variable labels and value labels within a survey
+data gathered using the <code>CEOdata()</code> function.</li>
 </ul>
 <div id="ceodata-get-the-survey-data" class="section level1">
 <h1><code>CEOdata()</code>: Get the survey data</h1>
-<p>The most comprehensive kind of data on Catalan public opinion is the “Barometer”, that can be retrieved by default by the main function <code>CEOdata()</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(CEOdata)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>d &lt;-<span class="st"> </span><span class="kw">CEOdata</span>()</span></code></pre></div>
-<p>This provides a cleaned and merged version of all the available Barometers, since 2017, providing easy access to the following number of responses and variables:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">dim</span>(d)</span></code></pre></div>
-<pre><code>## [1] 35838   897</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>d</span></code></pre></div>
-<pre><code>## # A tibble: 35,838 × 897
-##    PONDERA ORDRECINE ORDRE_REVISADA   REO METODOLOGIA BOP_NUM    ANY   MES   DIA
-##      &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1    1.86         1             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
-##  2    1.86         2             NA   746 &lt;NA&gt;        Març 14…  2014     3     5
-##  3    1.86         3             NA   746 &lt;NA&gt;        Març 14…  2014     3    11
-##  4    1.86         4             NA   746 &lt;NA&gt;        Març 14…  2014     3    11
-##  5    1.86         5             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
-##  6    1.86         6             NA   746 &lt;NA&gt;        Març 14…  2014     3    28
-##  7    1.86         7             NA   746 &lt;NA&gt;        Març 14…  2014     3     3
-##  8    1.86         8             NA   746 &lt;NA&gt;        Març 14…  2014     3    25
-##  9    1.86         9             NA   746 &lt;NA&gt;        Març 14…  2014     3     7
-## 10    1.86        10             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
-## # … with 35,828 more rows, and 888 more variables: HORA_INI &lt;time&gt;,
-## #   HORA_FIN &lt;time&gt;, DATA_INI &lt;date&gt;, DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;,
-## #   FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;,
-## #   ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
-## #   ENQUESTADOR_NACIONALITAT &lt;fct&gt;, NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;,
-## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;,
-## #   SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">names</span>(d)[<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>]</span></code></pre></div>
+<p>The most comprehensive kind of data on Catalan public opinion is the
+“Barometer”, that can be retrieved by default by the main function
+<code>CEOdata()</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(CEOdata)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">CEOdata</span>()</span></code></pre></div>
+<p>This provides a cleaned and merged version of all the available
+Barometers, since 2017, providing easy access to the following number of
+responses and variables:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">dim</span>(d)</span></code></pre></div>
+<pre><code>## [1] 39838  1092</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>## # A tibble: 39,838 × 1,092
+##    PONDERA ORDRECINE ORDRE_REV…¹   REO METOD…² BOP_NUM   ANY   MES   DIA HORA_…³
+##      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;time&gt; 
+##  1    1.86         1          NA   746 &lt;NA&gt;    Març 1…  2014     3    27    NA  
+##  2    1.86         2          NA   746 &lt;NA&gt;    Març 1…  2014     3     5    NA  
+##  3    1.86         3          NA   746 &lt;NA&gt;    Març 1…  2014     3    11    NA  
+##  4    1.86         4          NA   746 &lt;NA&gt;    Març 1…  2014     3    11    NA  
+##  5    1.86         5          NA   746 &lt;NA&gt;    Març 1…  2014     3    27    NA  
+##  6    1.86         6          NA   746 &lt;NA&gt;    Març 1…  2014     3    28    NA  
+##  7    1.86         7          NA   746 &lt;NA&gt;    Març 1…  2014     3     3    NA  
+##  8    1.86         8          NA   746 &lt;NA&gt;    Març 1…  2014     3    25    NA  
+##  9    1.86         9          NA   746 &lt;NA&gt;    Març 1…  2014     3     7    NA  
+## 10    1.86        10          NA   746 &lt;NA&gt;    Març 1…  2014     3    27    NA  
+## # … with 39,828 more rows, 1,082 more variables: HORA_FIN &lt;time&gt;,
+## #   DATA_INI &lt;date&gt;, DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;, FASE &lt;fct&gt;,
+## #   ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;, ENQUESTADOR_EDAT &lt;dbl&gt;,
+## #   ENQUESTADOR_ESTUDIS &lt;fct&gt;, ENQUESTADOR_NACIONALITAT &lt;fct&gt;,
+## #   NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;, HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;,
+## #   COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;, SECCIO_TEORICA &lt;dbl&gt;,
+## #   CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, DOMICILI_PARTICULAR &lt;fct&gt;, …</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">names</span>(d)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;PONDERA&quot;                  &quot;ORDRECINE&quot;               
 ##  [3] &quot;ORDRE_REVISADA&quot;           &quot;REO&quot;                     
 ##  [5] &quot;METODOLOGIA&quot;              &quot;BOP_NUM&quot;                 
@@ -415,247 +419,309 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## [49] &quot;PROBLEMES_R_1&quot;            &quot;PROBLEMES_R_2&quot;</code></pre>
 <div id="specific-studies-or-time-frames" class="section level2">
 <h2>Specific studies or time frames</h2>
-<p><code>CEOdata()</code> allows you to select specific Barometers, by providing their internal register in the <code>reo</code> argument. The reo is the internal name that the CEO uses, and stands for “Registre d’Estudis d’Opinió” (register of opinion studies), and is the main identifier of the survey, also present in the table of meta data. Although many of them are numbers, some have a number, a slash and another number, and therefore a character vector must be passed. Only a single REO can be passed, as it is not guaranteed that different data matrices share any column, and may refer to very different topics.</p>
-<p>For instance, to get only the data of the study with register “746” (corresponding to March 2013):</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>d746 &lt;-<span class="st"> </span><span class="kw">CEOdata</span>(<span class="dt">reo =</span> <span class="st">&quot;746&quot;</span>)</span></code></pre></div>
+<p><code>CEOdata()</code> allows you to select specific Barometers, by
+providing their internal register in the <code>reo</code> argument. The
+reo is the internal name that the CEO uses, and stands for “Registre
+d’Estudis d’Opinió” (register of opinion studies), and is the main
+identifier of the survey, also present in the table of meta data.
+Although many of them are numbers, some have a number, a slash and
+another number, and therefore a character vector must be passed. Only a
+single REO can be passed, as it is not guaranteed that different data
+matrices share any column, and may refer to very different topics.</p>
+<p>For instance, to get only the data of the study with register “746”
+(corresponding to March 2013):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>d746 <span class="ot">&lt;-</span> <span class="fu">CEOdata</span>(<span class="at">reo =</span> <span class="st">&quot;746&quot;</span>)</span></code></pre></div>
 <pre><code>## Converting the original data into R. This may take a while.</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>d746</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>d746</span></code></pre></div>
 <pre><code>## # A tibble: 2,000 × 475
-##      NUM NUM_CINE      BOP_NUM   MES   ANY   DIA CODI_ENQ HOR_INI HOR_FIN DURADA
-##    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl+lbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+lb&gt; &lt;time&gt;  &lt;time&gt;   &lt;dbl&gt;
-##  1    NA        1 32 [Març. 1…     4    14    NA 243 [G3]    NA      NA     1203
-##  2    NA        2 32 [Març. 1…     4    14    NA 254 [T4]    NA      NA      997
-##  3    NA        3 32 [Març. 1…     4    14    NA 243 [G3]    NA      NA     1127
-##  4    NA        4 32 [Març. 1…     4    14    NA 235 [B5]    NA      NA     1792
-##  5    NA        5 32 [Març. 1…     4    14    NA 236 [B6]    NA      NA     1418
-##  6    NA        6 32 [Març. 1…     3    14    NA 246 [L1]    NA      NA     1964
-##  7    NA        7 32 [Març. 1…     4    14    NA 244 [G4]    NA      NA     2283
-##  8    NA        8 32 [Març. 1…     4    14    NA 233 [B3]    NA      NA     1322
-##  9    NA        9 32 [Març. 1…     3    14    NA 232 [B2]    NA      NA     1778
-## 10    NA       10 32 [Març. 1…     3    14    NA 254 [T4]    NA      NA     1119
+##      NUM NUM_CINE BOP_NUM    MES   ANY   DIA CODI_ENQ HOR_INI HOR_FIN DURADA
+##    &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;time&gt;  &lt;time&gt;   &lt;dbl&gt;
+##  1    NA        1 Març. 14     4    14    NA G3          NA      NA     1203
+##  2    NA        2 Març. 14     4    14    NA T4          NA      NA      997
+##  3    NA        3 Març. 14     4    14    NA G3          NA      NA     1127
+##  4    NA        4 Març. 14     4    14    NA B5          NA      NA     1792
+##  5    NA        5 Març. 14     4    14    NA B6          NA      NA     1418
+##  6    NA        6 Març. 14     3    14    NA L1          NA      NA     1964
+##  7    NA        7 Març. 14     4    14    NA G4          NA      NA     2283
+##  8    NA        8 Març. 14     4    14    NA B3          NA      NA     1322
+##  9    NA        9 Març. 14     3    14    NA B2          NA      NA     1778
+## 10    NA       10 Març. 14     3    14    NA T4          NA      NA     1119
 ## # … with 1,990 more rows, and 465 more variables: num_quest &lt;dbl&gt;,
-## #   sexe_enq &lt;dbl+lbl&gt;, edat_enq &lt;dbl&gt;, estudis_enq &lt;dbl+lbl&gt;,
-## #   nacionalitat_enq &lt;dbl+lbl&gt;, PROVI &lt;dbl+lbl&gt;, HABITAT &lt;dbl+lbl&gt;,
-## #   MUN &lt;dbl+lbl&gt;, ADRECA &lt;chr&gt;, COMARCA &lt;dbl+lbl&gt;, SEXE &lt;dbl+lbl&gt;, EDAT &lt;dbl&gt;,
-## #   SE &lt;chr&gt;, GR_EDAT &lt;dbl+lbl&gt;, Edat_CEO &lt;dbl+lbl&gt;, F01 &lt;dbl+lbl&gt;,
-## #   F02 &lt;dbl+lbl&gt;, F03 &lt;dbl+lbl&gt;, F04 &lt;dbl+lbl&gt;, PRE_P1 &lt;dbl+lbl&gt;,
-## #   P1_LITERALS &lt;chr&gt;, P1_100_R &lt;dbl&gt;, P1_200_R &lt;dbl&gt;, P1_300_R &lt;dbl&gt;, …</code></pre>
-<p>Not all studies carried on by the CEO (and therefore listed in the <code>CEOmeta()</code> function –see below–) have microdata available. For convenience, there is a variable in the metadata that returns whether the microdata is available or not (<code>microdata_available</code>).</p>
-<p>When using the <code>kind</code> argument (which is the default), the function <code>CEOdata()</code> also allows to restrict the whole set of barometers based on specific time frames defined by a date with the arguments <code>date_start</code> and <code>date_end</code> using the YYYY-MM-DD format. Notice that only the barometers are considered when using this arguments, not other studies.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>b2019 &lt;-<span class="st"> </span><span class="kw">CEOdata</span>(<span class="dt">date_start =</span> <span class="st">&quot;2019-01-01&quot;</span>, <span class="dt">date_end =</span> <span class="st">&quot;2019-12-31&quot;</span>)</span></code></pre></div>
+## #   sexe_enq &lt;fct&gt;, edat_enq &lt;dbl&gt;, estudis_enq &lt;fct&gt;, nacionalitat_enq &lt;fct&gt;,
+## #   PROVI &lt;fct&gt;, HABITAT &lt;fct&gt;, MUN &lt;fct&gt;, ADRECA &lt;chr&gt;, COMARCA &lt;fct&gt;,
+## #   SEXE &lt;fct&gt;, EDAT &lt;dbl&gt;, SE &lt;chr&gt;, GR_EDAT &lt;fct&gt;, Edat_CEO &lt;fct&gt;, F01 &lt;fct&gt;,
+## #   F02 &lt;fct&gt;, F03 &lt;fct&gt;, F04 &lt;fct&gt;, PRE_P1 &lt;fct&gt;, P1_LITERALS &lt;chr&gt;,
+## #   P1_100_R &lt;dbl&gt;, P1_200_R &lt;dbl&gt;, P1_300_R &lt;dbl&gt;, P1_400_R &lt;dbl&gt;,
+## #   P1_500_R &lt;dbl&gt;, P1_600_R &lt;dbl&gt;, P1_700_R &lt;dbl&gt;, P1_800_R &lt;dbl&gt;, …</code></pre>
+<p>Not all studies carried on by the CEO (and therefore listed in the
+<code>CEOmeta()</code> function –see below–) have microdata available.
+For convenience, there is a variable in the metadata that returns
+whether the microdata is available or not
+(<code>microdata_available</code>).</p>
+<p>When using the <code>kind</code> argument (which is the default), the
+function <code>CEOdata()</code> also allows to restrict the whole set of
+barometers based on specific time frames defined by a date with the
+arguments <code>date_start</code> and <code>date_end</code> using the
+YYYY-MM-DD format. Notice that only the barometers are considered when
+using this arguments, not other studies.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>b2019 <span class="ot">&lt;-</span> <span class="fu">CEOdata</span>(<span class="at">date_start =</span> <span class="st">&quot;2019-01-01&quot;</span>, <span class="at">date_end =</span> <span class="st">&quot;2019-12-31&quot;</span>)</span></code></pre></div>
 <pre><code>## Downloading the barometer.</code></pre>
 <pre><code>## Converting the original data into R. This may take a while.</code></pre>
 <pre><code>## Post-processing the data. This may take a while.</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>b2019</span></code></pre></div>
-<pre><code>## # A tibble: 4,500 × 897
-##    PONDERA ORDRECINE ORDRE_REVISADA   REO METODOLOGIA BOP_NUM    ANY   MES   DIA
-##      &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1       1     23339             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  2       1     23340             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  3       1     23341             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  4       1     23342             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  5       1     23343             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  6       1     23344             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  7       1     23345             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  8       1     23346             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-##  9       1     23347             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-## 10       1     23348             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
-## # … with 4,490 more rows, and 888 more variables: HORA_INI &lt;time&gt;,
-## #   HORA_FIN &lt;time&gt;, DATA_INI &lt;date&gt;, DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;,
-## #   FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;,
-## #   ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
-## #   ENQUESTADOR_NACIONALITAT &lt;fct&gt;, NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;,
-## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;,
-## #   SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>b2019</span></code></pre></div>
+<pre><code>## # A tibble: 4,500 × 1,092
+##    PONDERA ORDRECINE ORDRE_REV…¹   REO METOD…² BOP_NUM   ANY   MES   DIA HORA_…³
+##      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;time&gt; 
+##  1       1     23339          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  2       1     23340          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  3       1     23341          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  4       1     23342          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  5       1     23343          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  6       1     23344          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  7       1     23345          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  8       1     23346          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+##  9       1     23347          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+## 10       1     23348          NA   919 &lt;NA&gt;    Març 1…  2019     3     4    NA  
+## # … with 4,490 more rows, 1,082 more variables: HORA_FIN &lt;time&gt;,
+## #   DATA_INI &lt;date&gt;, DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;, FASE &lt;fct&gt;,
+## #   ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;, ENQUESTADOR_EDAT &lt;dbl&gt;,
+## #   ENQUESTADOR_ESTUDIS &lt;fct&gt;, ENQUESTADOR_NACIONALITAT &lt;fct&gt;,
+## #   NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;, HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;,
+## #   COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;, SECCIO_TEORICA &lt;dbl&gt;,
+## #   CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, DOMICILI_PARTICULAR &lt;fct&gt;, …</code></pre>
 </div>
 <div id="extra-variables" class="section level2">
 <h2>Extra variables</h2>
-<p>By default <code>CEOdata()</code> incorporates new variables to the original matrix. Variables that are created for convenience, such as the date of the survey. The CEO data not always provides a day of the month. In that case, 28 is used. These variables appear at the end of the dataset and can be distinguished from the original CEO variables because only the first letter is capitalized.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="kw">tail</span>(<span class="kw">names</span>(d))</span></code></pre></div>
-<pre><code>## [1] &quot;CIRCUIT_1019_2&quot; &quot;CIRCUIT_1019_3&quot; &quot;CIRCUIT_1019_4&quot; &quot;CIRCUIT_1019_5&quot;
-## [5] &quot;CIRCUIT_1019_6&quot; &quot;Data&quot;</code></pre>
-<p>In case of desiring all variable names to be lowercase, one can simply convert them with <code>tolower()</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>d.lowercase &lt;-<span class="st"> </span>d</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="kw">names</span>(d.lowercase) &lt;-<span class="st"> </span><span class="kw">tolower</span>(<span class="kw">names</span>(d.lowercase))</span></code></pre></div>
+<p>By default <code>CEOdata()</code> incorporates new variables to the
+original matrix. Variables that are created for convenience, such as the
+date of the survey. The CEO data not always provides a day of the month.
+In that case, 28 is used. These variables appear at the end of the
+dataset and can be distinguished from the original CEO variables because
+only the first letter is capitalized.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">names</span>(d))</span></code></pre></div>
+<pre><code>## [1] &quot;CIRCUIT_1035_5&quot; &quot;CIRCUIT_1035_6&quot; &quot;CIRCUIT_1035_7&quot; &quot;CIRCUIT_1035_8&quot;
+## [5] &quot;CIRCUIT_1035_9&quot; &quot;Data&quot;</code></pre>
+<p>In case of desiring all variable names to be lowercase, one can
+simply convert them with <code>tolower()</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>d.lowercase <span class="ot">&lt;-</span> d</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">names</span>(d.lowercase) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(d.lowercase))</span></code></pre></div>
 </div>
 </div>
 <div id="ceometa-access-to-the-metadata-of-studies-and-surveys" class="section level1">
-<h1><code>CEOmeta()</code>: Access to the metadata of studies and surveys</h1>
-<p>The function <code>CEOmeta</code> allows to easily retrieve, search and restrict by time the list of all the surveys produced by the CEO, which amounts to more than a thousand as of early 2022.</p>
-<p>When called alone, the function downloads the latest version of the metadata published by the center, in a transparent way, and caching its content so that any subsequent calls in the same <code>R</code> session do not need to download it again.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 1,133 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 1019  Baròmetre d&#39;Opinió Po… Baròmetre d&#39;O… quantitativa     presencial      
-##  2 1018  Enquesta de Satisfacc… Enquesta de S… quantitativa     internet        
-##  3 1017  Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  4 1016  Enquesta a ens locals… Enquesta a en… quantitativa     internet        
-##  5 1015  Enquesta d&#39;inserció l… Enquesta d&#39;in… quantitativa     telèfon         
-##  6 1014  Enquesta d&#39;inserció l… Enquesta d&#39;in… quantitativa     telèfon         
-##  7 1013  Enquesta d&#39;inserció l… Enquesta d&#39;in… quantitativa     telèfon         
-##  8 1012  Enquesta d&#39;inserció l… Enquesta d&#39;in… quantitativa     telèfon         
-##  9 1011  Òmnibus de la General… Òmnibus de la… quantitativa     presencial      
-## 10 1010  Enquesta metodològica… Enquesta meto… quantitativa     internet        
-## # … with 1,123 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+<h1><code>CEOmeta()</code>: Access to the metadata of studies and
+surveys</h1>
+<p>The function <code>CEOmeta</code> allows to easily retrieve, search
+and restrict by time the list of all the surveys produced by the CEO,
+which amounts to more than a thousand as of early 2022.</p>
+<p>When called alone, the function downloads the latest version of the
+metadata published by the center, in a transparent way, and caching its
+content so that any subsequent calls in the same <code>R</code> session
+do not need to download it again.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">CEOmeta</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 1,180 × 28
+##    REO   Titol e…¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶  Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 1032  Òmnibus … Òmnibu… quanti… presen… L&#39;obje… Catalu…    NA Centre… Sigma …
+##  2 1031  Baròmetr… Baròme… quanti… presen… Recoll… Catalu… 56900 Centre… Gabine…
+##  3 1030  El model… El mod… qualit… entrev… - Iden… Catalu…    NA Depart… Depart…
+##  4 1029  Estudi q… Estudi… qualit… entrev… Explor… Catalu…    NA Depart… Depart…
+##  5 1028  Models d… Models… qualit… entrev… Detect… Catalu…    NA Depart… Depart…
+##  6 1027  Índex de… Índex … quanti… presen… Indica… Catalu…    NA Depart… Psyma  
+##  7 1026  Estudi d… Estudi… quanti… telèfon Obteni… Catalu…    NA Depart… UTE Ga…
+##  8 1025  Estudi d… Estudi… quanti… telèfon Obteni… Catalu…    NA Depart… UTE Ga…
+##  9 1024  Estudi d… Estudi… quanti… telèfon Mesura… Catalu…    NA Depart… UTE Ga…
+## 10 1023  Estudi d… Estudi… quanti… telèfon Mesura… Catalu…    NA Depart… UTE Ga…
+## # … with 1,170 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
 <div id="get-a-specific-study" class="section level2">
 <h2>Get a specific study</h2>
-<p>In order to get the metadata of a specific study, the <code>reo</code> argument can be used:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">reo =</span> <span class="st">&quot;746&quot;</span>)</span></code></pre></div>
+<p>In order to get the metadata of a specific study, the
+<code>reo</code> argument can be used:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">reo =</span> <span class="st">&quot;746&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 28
-##   REO   `Titol enquesta`        `Titol estudi` `Metodologia e…` `Metode de rec…`
-##   &lt;fct&gt; &lt;chr&gt;                   &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-## 1 746   Baròmetre d&#39;Opinió Pol… Baròmetre d&#39;O… quantitativa     presencial      
-## # … with 23 more variables: Objectius &lt;chr&gt;, `Ambit territorial` &lt;fct&gt;,
-## #   Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;, `Executors enquesta` &lt;chr&gt;,
-## #   `Promotors estudi` &lt;chr&gt;, `Executors estudi` &lt;chr&gt;,
+##   REO   Titol en…¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶  Cost Promo…⁷ Execu…⁸
+##   &lt;fct&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1 746   Baròmetre… Baròme… quanti… presen… Recoll… Catalu… 45500 Centre… Opinòm…
+## # … with 18 more variables: `Promotors estudi` &lt;chr&gt;, `Executors estudi` &lt;chr&gt;,
 ## #   `Data de treball de camp` &lt;chr&gt;, `Dia inici treball de camp` &lt;date&gt;,
 ## #   `Dia final treball de camp` &lt;date&gt;, Univers &lt;chr&gt;, Mostra &lt;chr&gt;,
 ## #   `Mostra estudis quantitatius` &lt;dbl&gt;, `Mostra estudis qualitatius` &lt;chr&gt;,
-## #   `Error mostral` &lt;chr&gt;, `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, …</code></pre>
+## #   `Error mostral` &lt;chr&gt;, `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;,
+## #   `Any d&#39;entrada al REO` &lt;int&gt;, `Data d&#39;alta al REO` &lt;date&gt;,
+## #   Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, `Enllac matriu de dades` &lt;chr&gt;, …</code></pre>
 </div>
 <div id="search-for-specific-topics-though-keywords" class="section level2">
 <h2>Search for specific topics though keywords</h2>
-<p>The first relevant argument for <code>CEOmeta()</code> is <code>search</code>, which is a built-in simple search engine that goes through the columns of the metadata containing potential descriptive information (title, summary, objectives and tags -descriptors-) and returns the studies that contain such keyword.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">search =</span> <span class="st">&quot;Medi ambient&quot;</span>)</span></code></pre></div>
+<p>The first relevant argument for <code>CEOmeta()</code> is
+<code>search</code>, which is a built-in simple search engine that goes
+through the columns of the metadata containing potential descriptive
+information (title, summary, objectives and tags -descriptors-) and
+returns the studies that contain such keyword.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">search =</span> <span class="st">&quot;Medi ambient&quot;</span>)</span></code></pre></div>
 <pre><code>## Looking for entries with: medi ambient</code></pre>
-<pre><code>## # A tibble: 45 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 1017  Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  2 1010  Enquesta metodològica… Enquesta meto… quantitativa     internet        
-##  3 1006  Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  4 941   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  5 876   Baròmetre de la bicic… Baròmetre de … quantitativa     internet;telèfon
-##  6 875   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  7 865   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  8 819   Baròmetre 2015 de per… Baròmetre 201… quantitativa     telèfon         
-##  9 807   Seguiment d&#39;Indicador… Seguiment d&#39;i… quantitativa     telèfon         
-## 10 805   Baròmetre de la bicic… Baròmetre de … quantitativa     internet;telèfon
-## # … with 35 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+<pre><code>## # A tibble: 46 × 28
+##    REO   Titol …¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶   Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 1017  Seguime… Seguim… quanti… telèfon Conèix… Catalu…    NA  Depart… Fieldw…
+##  2 1010  Enquest… Enques… quanti… intern… Desenv… Catalu…  8200  Centre… Soluci…
+##  3 1006  Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… UTE MD…
+##  4 973   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… Gabine…
+##  5 941   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… UTE MD…
+##  6 876   Baròmet… Baròme… quanti… intern… Conèix… Catalu… 15428. Depart… Instit…
+##  7 875   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14700  Depart… Gabine…
+##  8 865   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14700  Depart… Fieldw…
+##  9 819   Baròmet… Baròme… quanti… telèfon Quanti… Catalu… 17120  Depart… MDK, I…
+## 10 807   Seguime… Seguim… quanti… telèfon Conèix… Catalu…  9850  Depart… Gabine…
+## # … with 36 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
-<p>It is also possible to pass more than one value to <code>search</code>, so that the search includes them (either one of them OR any other).</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">search =</span> <span class="kw">c</span>(<span class="st">&quot;Medi ambient&quot;</span>, <span class="st">&quot;Municipi&quot;</span>))</span></code></pre></div>
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
+<p>It is also possible to pass more than one value to
+<code>search</code>, so that the search includes them (either one of
+them OR any other).</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">search =</span> <span class="fu">c</span>(<span class="st">&quot;Medi ambient&quot;</span>, <span class="st">&quot;Municipi&quot;</span>))</span></code></pre></div>
 <pre><code>## Looking for entries with: medi ambient OR municipi</code></pre>
-<pre><code>## # A tibble: 49 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 1017  Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  2 1010  Enquesta metodològica… Enquesta meto… quantitativa     internet        
-##  3 1006  Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  4 941   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  5 876   Baròmetre de la bicic… Baròmetre de … quantitativa     internet;telèfon
-##  6 875   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  7 865   Seguiment d&#39;indicador… Seguiment d&#39;i… quantitativa     telèfon         
-##  8 819   Baròmetre 2015 de per… Baròmetre 201… quantitativa     telèfon         
-##  9 807   Seguiment d&#39;Indicador… Seguiment d&#39;i… quantitativa     telèfon         
-## 10 805   Baròmetre de la bicic… Baròmetre de … quantitativa     internet;telèfon
-## # … with 39 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+<pre><code>## # A tibble: 50 × 28
+##    REO   Titol …¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶   Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 1017  Seguime… Seguim… quanti… telèfon Conèix… Catalu…    NA  Depart… Fieldw…
+##  2 1010  Enquest… Enques… quanti… intern… Desenv… Catalu…  8200  Centre… Soluci…
+##  3 1006  Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… UTE MD…
+##  4 973   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… Gabine…
+##  5 941   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14950  Depart… UTE MD…
+##  6 876   Baròmet… Baròme… quanti… intern… Conèix… Catalu… 15428. Depart… Instit…
+##  7 875   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14700  Depart… Gabine…
+##  8 865   Seguime… Seguim… quanti… telèfon Conèix… Catalu… 14700  Depart… Fieldw…
+##  9 819   Baròmet… Baròme… quanti… telèfon Quanti… Catalu… 17120  Depart… MDK, I…
+## 10 807   Seguime… Seguim… quanti… telèfon Conèix… Catalu…  9850  Depart… Gabine…
+## # … with 40 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
-<p>In addition to the built-in argument to search through the columns of the survey title, the study title, the objectives, the summary and the tags (descriptors), it is possible to combine <code>CEOmeta()</code> with <code>dplyr</code>’s <code>filter()</code> to limit the results of studies returned.</p>
-<p>For example, to get the studies that have been performed using Internet to get the data:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>() <span class="op">|</span><span class="er">&gt;</span><span class="st"> </span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Metode de recollida de dades</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;internet&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 36 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 1018  Enquesta de Satisfacc… Enquesta de S… quantitativa     internet        
-##  2 1016  Enquesta a ens locals… Enquesta a en… quantitativa     internet        
-##  3 1010  Enquesta metodològica… Enquesta meto… quantitativa     internet        
-##  4 1000  Enquesta panel sobre … Enquesta pane… quantitativa     internet        
-##  5 993   Enquesta de satisfacc… Enquesta de s… quantitativa     internet        
-##  6 969   Estudi de percepció, … Estudi de per… quantitativa     internet        
-##  7 968   Estudi de percepció, … Estudi de per… quantitativa     internet        
-##  8 966   Enquesta sobre els us… Enquesta sobr… quantitativa     internet        
-##  9 965   Enquesta sobre l&#39;impa… Enquesta sobr… quantitativa     internet        
-## 10 961   Enquesta de satisfacc… Enquesta de s… quantitativa     internet        
-## # … with 26 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
+<p>In addition to the built-in argument to search through the columns of
+the survey title, the study title, the objectives, the summary and the
+tags (descriptors), it is possible to combine <code>CEOmeta()</code>
+with <code>dplyr</code>’s <code>filter()</code> to limit the results of
+studies returned.</p>
+<p>For example, to get the studies that have been performed using
+Internet to get the data:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">CEOmeta</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Metode de recollida de dades</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;internet&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 39 × 28
+##    REO   Titol e…¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶  Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 1020  Polaritz… Polari… quanti… intern… Analit… Espanya    NA Instit… Soluci…
+##  2 1018  Enquesta… Enques… quanti… intern… Avalua… Catalu…    NA Centre… Centre…
+##  3 1016  Enquesta… Enques… quanti… intern… Dispos… Catalu…    NA Observ… MDK, I…
+##  4 1010  Enquesta… Enques… quanti… intern… Desenv… Catalu…  8200 Centre… Soluci…
+##  5 1000  Enquesta… Enques… quanti… intern… Recoll… Catalu… 18516 Centre… Soluci…
+##  6 995   Enquesta… Enques… quanti… intern… Avalua… Catalu…    NA Centre… Centre…
+##  7 993   Enquesta… Enques… quanti… intern… Avalua… Catalu…    NA Centre… Centre…
+##  8 989   Enquesta… Enques… quanti… intern… Avalua… Catalu…     0 Depart… Centre…
+##  9 969   Estudi d… Estudi… quanti… intern… La fin… Catalu…    NA Depart… Depart…
+## 10 968   Estudi d… Estudi… quanti… intern… La fin… Catalu…    NA Depart… Depart…
+## # … with 29 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
 <p>Or to get studies with a specific quantitative sample size limit:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>() <span class="op">|</span><span class="er">&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Mostra estudis quantitatius</span><span class="st">`</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 166 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 964   Enquesta satisfacció … Enquesta sati… quantitativa     autoadministrada
-##  2 963   Enquesta satisfacció … Enquesta sati… quantitativa     autoadministrada
-##  3 957   Avaluació del grau de… Avaluació del… quantitativa     presencial      
-##  4 950   Enquesta de satisfacc… Enquesta de s… quantitativa     telèfon         
-##  5 933   iPLAENSA: Enquesta d&#39;… iPLAENSA: Enq… quantitativa     telèfon         
-##  6 930   iPLAENSA: Satisfacció… iPLAENSA: Sat… quantitativa     telèfon         
-##  7 929   iPLAENSA: Opinió i sa… iPLAENSA: Opi… quantitativa     telèfon         
-##  8 928   iPLAENSA: Satisfacció… iPLAENSA: Sat… quantitativa     telèfon         
-##  9 926   Enquesta satisfacció … Enquesta sati… quantitativa     telèfon         
-## 10 918   Enquesta satisfacció … Enquesta sati… quantitativa     autoadministrada
-## # … with 156 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">CEOmeta</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Mostra estudis quantitatius</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">500</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 170 × 28
+##    REO   Titol e…¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶  Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 990   IPLAENSA… IPLAEN… quanti… telèfon &quot;La fi… Catalu…    NA Depart… Depart…
+##  2 989   Enquesta… Enques… quanti… intern… &quot;Avalu… Catalu…     0 Depart… Centre…
+##  3 984   iPLAENSA… iPLAEN… quanti… telèfon &quot;La fi… Catalu…    NA Depart… Depart…
+##  4 983   iPLAENSA… iPLAEN… quanti… telèfon &quot;La fi… Catalu…    NA Depart… Depart…
+##  5 964   Enquesta… Enques… quanti… autoad… &quot;Estim… Catalu…  4065 Depart… Depart…
+##  6 963   Enquesta… Enques… quanti… autoad… &quot;Estim… Catalu…  4065 Depart… Depart…
+##  7 957   Avaluaci… Avalua… quanti… presen… &quot;Avalu… Catalu…  5092 Depart… Psyma  
+##  8 950   Enquesta… Enques… quanti… telèfon &quot;Estim… Catalu…  3600 Depart… Depart…
+##  9 933   iPLAENSA… iPLAEN… quanti… telèfon &quot;La fi… Catalu…    NA Depart… Depart…
+## 10 930   iPLAENSA… iPLAEN… quanti… telèfon &quot;La fi… Catalu…    NA Depart… Depart…
+## # … with 160 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
 </div>
 <div id="restrict-by-time" class="section level2">
 <h2>Restrict by time</h2>
-<p>Metadata can be retrieved for a specific period of time, by using the arguments <code>date_start</code> and <code>date_end</code>, also using the YYYY-MM-DD format. In this case the dates that are taken into account are dates where the study gets into the records, not the fieldwork dates.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">date_start =</span> <span class="st">&quot;2019-01-01&quot;</span>, <span class="dt">date_end =</span> <span class="st">&quot;2019-12-31&quot;</span>)</span></code></pre></div>
+<p>Metadata can be retrieved for a specific period of time, by using the
+arguments <code>date_start</code> and <code>date_end</code>, also using
+the YYYY-MM-DD format. In this case the dates that are taken into
+account are dates where the study gets into the records, not the
+fieldwork dates.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">date_start =</span> <span class="st">&quot;2019-01-01&quot;</span>, <span class="at">date_end =</span> <span class="st">&quot;2019-12-31&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 45 × 28
-##    REO   `Titol enquesta`       `Titol estudi` `Metodologia e…` `Metode de rec…`
-##    &lt;fct&gt; &lt;chr&gt;                  &lt;chr&gt;          &lt;fct&gt;            &lt;fct&gt;           
-##  1 954   Baròmetre d&#39;Opinió Po… Baròmetre d&#39;O… quantitativa     presencial      
-##  2 953   Enquesta de satisfacc… Enquesta de s… quantitativa     internet        
-##  3 952   Percepció sobre el de… Percepció sob… quantitativa     presencial      
-##  4 951   Cosmopolitisme i loca… Cosmopolitism… quantitativa     presencial      
-##  5 950   Enquesta de satisfacc… Enquesta de s… quantitativa     telèfon         
-##  6 949   Enquesta sobre civism… Enquesta sobr… quantitativa     internet;presen…
-##  7 948   Enquesta sobre el deb… Enquesta sobr… quantitativa     telèfon         
-##  8 947   Baròmetre sanitari de… Baròmetre san… quantitativa     telèfon         
-##  9 946   Òmnibus de la General… Òmnibus de la… quantitativa     presencial      
-## 10 945   Baròmetre de satisfac… Baròmetre de … quantitativa     internet        
-## # … with 35 more rows, and 23 more variables: Objectius &lt;chr&gt;,
-## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
-## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
+##    REO   Titol e…¹ Titol…² Metod…³ Metod…⁴ Objec…⁵ Ambit…⁶  Cost Promo…⁷ Execu…⁸
+##    &lt;fct&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;chr&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1 954   Baròmetr… Baròme… quanti… presen… &quot;Recol… Catalu… 40365 Centre… Gabine…
+##  2 953   Enquesta… Enques… quanti… intern… &quot;Avalu… Catalu…    NA Centre… Centre…
+##  3 952   Percepci… Percep… quanti… presen… &quot;Recol… Espanya 98820 Depart… Instit…
+##  4 951   Cosmopol… Cosmop… quanti… presen… &quot;Ident… Catalu… 41820 Centre… Gabine…
+##  5 950   Enquesta… Enques… quanti… telèfon &quot;Estim… Catalu…  3600 Depart… Depart…
+##  6 949   Enquesta… Enques… quanti… intern… &quot;Els d… Catalu… 46000 Depart… Ipsos …
+##  7 948   Enquesta… Enques… quanti… telèfon &quot;Mesur… Catalu…  9680 Centre… UTE MD…
+##  8 947   Baròmetr… Baròme… quanti… telèfon &quot;Conèi… Catalu…    NA Depart… UTE Ga…
+##  9 946   Òmnibus … Òmnibu… quanti… presen… &quot;Obten… Catalu… 32208 Centre… Gabine…
+## 10 945   Baròmetr… Baròme… quanti… intern… &quot;Conèi… Europa  28380 Depart… More t…
+## # … with 35 more rows, 18 more variables: `Promotors estudi` &lt;chr&gt;,
 ## #   `Executors estudi` &lt;chr&gt;, `Data de treball de camp` &lt;chr&gt;,
 ## #   `Dia inici treball de camp` &lt;date&gt;, `Dia final treball de camp` &lt;date&gt;,
 ## #   Univers &lt;chr&gt;, Mostra &lt;chr&gt;, `Mostra estudis quantitatius` &lt;dbl&gt;,
-## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;, …</code></pre>
+## #   `Mostra estudis qualitatius` &lt;chr&gt;, `Error mostral` &lt;chr&gt;,
+## #   `Error mostral (numèric)` &lt;chr&gt;, Resum &lt;chr&gt;, `Any d&#39;entrada al REO` &lt;int&gt;,
+## #   `Data d&#39;alta al REO` &lt;date&gt;, Descriptors &lt;chr&gt;, Enllac &lt;chr&gt;, …</code></pre>
 </div>
 <div id="browse-the-ceo-site" class="section level2">
 <h2>Browse the CEO site</h2>
-<p>In addition, to the search engine and the restriction by time <code>CEOmeta()</code> also allows to automatically open the relevant URLs at the CEO domain that contain the details of the studies gathered with the function. This can be done setting the <code>browse</code> argument to <code>TRUE</code>. However, there is a soft limitation of only 10 URLs to be opened, unless the user forces to really open all of them (proceed with caution, as this may open many tabs in your browser and leave your computer out of RAM in some scenarios of RAM black holes, such as Chrome).</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">search =</span> <span class="st">&quot;Medi ambient a&quot;</span>, <span class="dt">browse =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p>To open a specific REO, a simpler call with its specific identifier can be used:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">reo =</span> <span class="st">&quot;746&quot;</span>, <span class="dt">browse =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p>It is also possible to specify an alternative language, so the default Catalan pages are substituted by the automatic translations provided by Apertium (for Occitan/Aranese) or Google Translate.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="kw">CEOmeta</span>(<span class="dt">search =</span> <span class="st">&quot;Medi ambient a&quot;</span>, <span class="dt">browse =</span> <span class="ot">TRUE</span>, <span class="dt">browse_translate =</span> <span class="st">&quot;de&quot;</span>)</span></code></pre></div>
+<p>In addition, to the search engine and the restriction by time
+<code>CEOmeta()</code> also allows to automatically open the relevant
+URLs at the CEO domain that contain the details of the studies gathered
+with the function. This can be done setting the <code>browse</code>
+argument to <code>TRUE</code>. However, there is a soft limitation of
+only 10 URLs to be opened, unless the user forces to really open all of
+them (proceed with caution, as this may open many tabs in your browser
+and leave your computer out of RAM in some scenarios of RAM black holes,
+such as Chrome).</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">search =</span> <span class="st">&quot;Medi ambient a&quot;</span>, <span class="at">browse =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>To open a specific REO, a simpler call with its specific identifier
+can be used:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">reo =</span> <span class="st">&quot;746&quot;</span>, <span class="at">browse =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>It is also possible to specify an alternative language, so the
+default Catalan pages are substituted by the automatic translations
+provided by Apertium (for Occitan/Aranese) or Google Translate.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">CEOmeta</span>(<span class="at">search =</span> <span class="st">&quot;Medi ambient a&quot;</span>, <span class="at">browse =</span> <span class="cn">TRUE</span>, <span class="at">browse_translate =</span> <span class="st">&quot;de&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="ceosearch-access-to-the-variable-and-value-labels" class="section level1">
-<h1><code>CEOsearch()</code>: Access to the variable and value labels</h1>
-<p>Contrary to <code>CEOdata()</code> and <code>CEOmeta()</code>, <code>CEOsearch()</code> needs at least one argument: the survey data (microdata) for which we want to extract the variable labels and the value labels. By default it provides the variable labels in a tidy object:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d)  <span class="co"># equivalent to CEOsearch(d, where = &quot;variables&quot;)</span></span></code></pre></div>
-<pre><code>## # A tibble: 897 × 2
+<h1><code>CEOsearch()</code>: Access to the variable and value
+labels</h1>
+<p>Contrary to <code>CEOdata()</code> and <code>CEOmeta()</code>,
+<code>CEOsearch()</code> needs at least one argument: the survey data
+(microdata) for which we want to extract the variable labels and the
+value labels. By default it provides the variable labels in a tidy
+object:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d)  <span class="co"># equivalent to CEOsearch(d, where = &quot;variables&quot;)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1,092 × 2
 ##    Variable       Label                                                      
 ##    &lt;chr&gt;          &lt;chr&gt;                                                      
 ##  1 PONDERA        Coeficients de ponderació                                  
@@ -668,10 +734,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  8 MES            Mes de realització del baròmetre                           
 ##  9 DIA            Dia                                                        
 ## 10 HORA_INI       Hora d&#39;inici de l&#39;entrevista (variable anonimitzada)       
-## # … with 887 more rows</code></pre>
-<p>Equivalently, the use of <code>where = &quot;values&quot;</code> provides with a tidy object containing the value labels. Notice that in this case the variable names are repeated to accommodate each of the different value labels.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d, <span class="dt">where =</span> <span class="st">&quot;values&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 13,768 × 2
+## # … with 1,082 more rows</code></pre>
+<p>Equivalently, the use of <code>where = &quot;values&quot;</code> provides with
+a tidy object containing the value labels. Notice that in this case the
+variable names are repeated to accommodate each of the different value
+labels.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d, <span class="at">where =</span> <span class="st">&quot;values&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 16,034 × 2
 ##    Variable    Value        
 ##    &lt;fct&gt;       &lt;fct&gt;        
 ##  1 METODOLOGIA Presencial   
@@ -684,54 +753,67 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  8 BOP_NUM     Oct. 15 -804 
 ##  9 BOP_NUM     Feb. 16 -816 
 ## 10 BOP_NUM     Juny 16 -826 
-## # … with 13,758 more rows</code></pre>
-<p>Just like with the <code>CEOmeta()</code>, <code>CEOsearch()</code> has a simple built-in search facility that allows to retrieve only the rows that match a specific keyword(s). In the following example, we restrict the variables to those that contain “edat” (age).</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d, <span class="dt">keyword =</span> <span class="st">&quot;edat&quot;</span>)</span></code></pre></div>
+## # … with 16,024 more rows</code></pre>
+<p>Just like with the <code>CEOmeta()</code>, <code>CEOsearch()</code>
+has a simple built-in search facility that allows to retrieve only the
+rows that match a specific keyword(s). In the following example, we
+restrict the variables to those that contain “edat” (age).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d, <span class="at">keyword =</span> <span class="st">&quot;edat&quot;</span>)</span></code></pre></div>
 <pre><code>## Looking for entries with: edat</code></pre>
-<pre><code>## # A tibble: 15 × 2
-##    Variable            Label                                                    
-##    &lt;chr&gt;               &lt;chr&gt;                                                    
-##  1 ENQUESTADOR_EDAT    Edat de entrevistador/a                                  
-##  2 EDAT                Edat                                                     
-##  3 EDAT_GR             Grups d&#39;edat                                             
-##  4 EDAT_CEO            Grups d&#39;edat reagrupada (recodificació grups de 5 anys)  
-##  5 CRISI_ATUR_FAMILIAR En els últims dos anys, com a conseqüència de la crisi, …
-##  6 EDAT_1              EDAT_1 (variable anonimitzada)                           
-##  7 EDAT_2              EDAT_2 (variable anonimitzada)                           
-##  8 EDAT_3              EDAT_3 (variable anonimitzada)                           
-##  9 EDAT_4              EDAT_4 (variable anonimitzada)                           
-## 10 EDAT_5              EDAT_5 (variable anonimitzada)                           
-## 11 EDAT_6              EDAT_6 (variable anonimitzada)                           
-## 12 EDAT_7              EDAT_7 (variable anonimitzada)                           
-## 13 EDAT_8              EDAT_8 (variable anonimitzada)                           
-## 14 EDAT_9              EDAT_9 (variable anonimitzada)                           
-## 15 EDAT_10             EDAT_10 (variable anonimitzada)</code></pre>
-<p>Finally, an English translation of the variable labels/values is provided if the argument <code>translate</code> is set to <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d, <span class="dt">keyword =</span> <span class="st">&quot;edat&quot;</span>, <span class="dt">translate =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 18 × 2
+##    Variable                        Label                                        
+##    &lt;chr&gt;                           &lt;chr&gt;                                        
+##  1 ENQUESTADOR_EDAT                Edat de entrevistador/a                      
+##  2 EDAT                            Edat                                         
+##  3 EDAT_GR                         Grups d&#39;edat                                 
+##  4 EDAT_CEO                        Grups d&#39;edat reagrupada (recodificació grups…
+##  5 INF_POL_OBJ_RANG_ESCOLARITZACIO De quina edat a quina edat és obligatori l’e…
+##  6 INF_POL_OBJ_INI_ESCOLARITZACIO  De quina edat a quina edat és obligatori l’e…
+##  7 INF_POL_OBJ_FI_ESCOLARITZACIO   De quina edat a quina edat és obligatori l’e…
+##  8 CRISI_ATUR_FAMILIAR             En els últims dos anys, com a conseqüència d…
+##  9 EDAT_1                          EDAT_1 (variable anonimitzada)               
+## 10 EDAT_2                          EDAT_2 (variable anonimitzada)               
+## 11 EDAT_3                          EDAT_3 (variable anonimitzada)               
+## 12 EDAT_4                          EDAT_4 (variable anonimitzada)               
+## 13 EDAT_5                          EDAT_5 (variable anonimitzada)               
+## 14 EDAT_6                          EDAT_6 (variable anonimitzada)               
+## 15 EDAT_7                          EDAT_7 (variable anonimitzada)               
+## 16 EDAT_8                          EDAT_8 (variable anonimitzada)               
+## 17 EDAT_9                          EDAT_9 (variable anonimitzada)               
+## 18 EDAT_10                         EDAT_10 (variable anonimitzada)</code></pre>
+<p>Finally, an English translation of the variable labels/values is
+provided if the argument <code>translate</code> is set to
+<code>TRUE</code>, by opening a browser tab with the translations.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d, <span class="at">keyword =</span> <span class="st">&quot;edat&quot;</span>, <span class="at">translate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Looking for entries with: edat</code></pre>
-<pre><code>## # A tibble: 15 × 2
-##    Variable            Label                                                    
-##    &lt;chr&gt;               &lt;chr&gt;                                                    
-##  1 ENQUESTADOR_EDAT    Edat de entrevistador/a                                  
-##  2 EDAT                Edat                                                     
-##  3 EDAT_GR             Grups d&#39;edat                                             
-##  4 EDAT_CEO            Grups d&#39;edat reagrupada (recodificació grups de 5 anys)  
-##  5 CRISI_ATUR_FAMILIAR En els últims dos anys, com a conseqüència de la crisi, …
-##  6 EDAT_1              EDAT_1 (variable anonimitzada)                           
-##  7 EDAT_2              EDAT_2 (variable anonimitzada)                           
-##  8 EDAT_3              EDAT_3 (variable anonimitzada)                           
-##  9 EDAT_4              EDAT_4 (variable anonimitzada)                           
-## 10 EDAT_5              EDAT_5 (variable anonimitzada)                           
-## 11 EDAT_6              EDAT_6 (variable anonimitzada)                           
-## 12 EDAT_7              EDAT_7 (variable anonimitzada)                           
-## 13 EDAT_8              EDAT_8 (variable anonimitzada)                           
-## 14 EDAT_9              EDAT_9 (variable anonimitzada)                           
-## 15 EDAT_10             EDAT_10 (variable anonimitzada)</code></pre>
-<p>Of course, variable labels and values can be merged into a single object using a combination of <code>join</code> and <code>CEOsearch()</code>:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="kw">CEOsearch</span>(d) <span class="op">|</span><span class="er">&gt;</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">CEOsearch</span>(d, <span class="dt">where =</span> <span class="st">&quot;values&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 18 × 2
+##    Variable                        Label                                        
+##    &lt;chr&gt;                           &lt;chr&gt;                                        
+##  1 ENQUESTADOR_EDAT                Edat de entrevistador/a                      
+##  2 EDAT                            Edat                                         
+##  3 EDAT_GR                         Grups d&#39;edat                                 
+##  4 EDAT_CEO                        Grups d&#39;edat reagrupada (recodificació grups…
+##  5 INF_POL_OBJ_RANG_ESCOLARITZACIO De quina edat a quina edat és obligatori l’e…
+##  6 INF_POL_OBJ_INI_ESCOLARITZACIO  De quina edat a quina edat és obligatori l’e…
+##  7 INF_POL_OBJ_FI_ESCOLARITZACIO   De quina edat a quina edat és obligatori l’e…
+##  8 CRISI_ATUR_FAMILIAR             En els últims dos anys, com a conseqüència d…
+##  9 EDAT_1                          EDAT_1 (variable anonimitzada)               
+## 10 EDAT_2                          EDAT_2 (variable anonimitzada)               
+## 11 EDAT_3                          EDAT_3 (variable anonimitzada)               
+## 12 EDAT_4                          EDAT_4 (variable anonimitzada)               
+## 13 EDAT_5                          EDAT_5 (variable anonimitzada)               
+## 14 EDAT_6                          EDAT_6 (variable anonimitzada)               
+## 15 EDAT_7                          EDAT_7 (variable anonimitzada)               
+## 16 EDAT_8                          EDAT_8 (variable anonimitzada)               
+## 17 EDAT_9                          EDAT_9 (variable anonimitzada)               
+## 18 EDAT_10                         EDAT_10 (variable anonimitzada)</code></pre>
+<p>Of course, variable labels and values can be merged into a single
+object using a combination of <code>join</code> and
+<code>CEOsearch()</code>:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d) <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">CEOsearch</span>(d, <span class="at">where =</span> <span class="st">&quot;values&quot;</span>))</span></code></pre></div>
 <pre><code>## Joining, by = &quot;Variable&quot;</code></pre>
-<pre><code>## # A tibble: 13,842 × 3
+<pre><code>## # A tibble: 16,118 × 3
 ##    Variable       Label                                                    Value
 ##    &lt;chr&gt;          &lt;chr&gt;                                                    &lt;fct&gt;
 ##  1 PONDERA        Coeficients de ponderació                                &lt;NA&gt; 
@@ -744,12 +826,14 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ##  8 BOP_NUM        Número d&#39;ordre del baròmetre                             Març…
 ##  9 BOP_NUM        Número d&#39;ordre del baròmetre                             Oct.…
 ## 10 BOP_NUM        Número d&#39;ordre del baròmetre                             Feb …
-## # … with 13,832 more rows</code></pre>
+## # … with 16,108 more rows</code></pre>
 </div>
 <div id="development-and-acknowledgement" class="section level1">
 <h1>Development and acknowledgement</h1>
-<p>The development of <code>CEOdata</code> (track changes, propose improvements, report bugs) can be followed at <a href="https://github.com/ceopinio/CEOdata/">github</a>.</p>
-<p>If using the data and the package, please cite and acknowledge properly the CEO and the package, respectively.</p>
+<p>The development of <code>CEOdata</code> (track changes, propose
+improvements, report bugs) can be followed at <a href="https://github.com/ceopinio/CEOdata/">github</a>.</p>
+<p>If using the data and the package, please cite and acknowledge
+properly the CEO and the package, respectively.</p>
 <!-- # References -->
 </div>
 
