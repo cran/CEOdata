@@ -1,9 +1,21 @@
 ## ----echo=FALSE, message=FALSE, warning=FALSE---------------------------------
 library(CEOdata)
 
-## ----message = FALSE----------------------------------------------------------
+## ----message = FALSE, echo = TRUE, eval = FALSE-------------------------------
+#  library(CEOdata)
+#  d <- CEOdata()
+
+## ----message = FALSE, echo = FALSE, eval = TRUE-------------------------------
+library(knitr)
 library(CEOdata)
 d <- CEOdata()
+# If there is an internet problem, do not run the remaining of the chunks.
+if (is.null(d)) {
+  print("here")
+  knitr::opts_chunk$set(eval = FALSE)
+} else {
+  knitr::opts_chunk$set(eval = TRUE)
+}
 
 ## -----------------------------------------------------------------------------
 dim(d)
@@ -13,6 +25,9 @@ d
 
 ## -----------------------------------------------------------------------------
 names(d)[1:50]
+
+## ---- eval = FALSE------------------------------------------------------------
+#  d.raw <- CEOdata(raw = FALSE)
 
 ## -----------------------------------------------------------------------------
 d746 <- CEOdata(reo = "746")

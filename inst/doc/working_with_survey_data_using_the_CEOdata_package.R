@@ -1,9 +1,21 @@
 ## ----echo=FALSE, message=FALSE, warning=FALSE---------------------------------
 library(CEOdata)
 
-## ----message = FALSE----------------------------------------------------------
+## ----message = FALSE, echo = TRUE, eval = FALSE-------------------------------
+#  library(CEOdata)
+#  d <- CEOdata()
+
+## ----message = FALSE, echo = FALSE, eval = TRUE-------------------------------
+library(knitr)
 library(CEOdata)
 d <- CEOdata()
+# If there is an internet problem, do not run the remaining of the chunks.
+if (is.null(d)) {
+  print("here")
+  knitr::opts_chunk$set(eval = FALSE)
+} else {
+  knitr::opts_chunk$set(eval = TRUE)
+}
 
 ## ---- message = FALSE, warning = FALSE----------------------------------------
 library(dplyr)
@@ -92,9 +104,21 @@ survey.data <- d |>
 #  st(survey.data)
 
 ## ---- eval = TRUE, echo = FALSE-----------------------------------------------
-vtable::st(survey.data, out = "kable")
+if (exists("survey.data")) {
+  if (!is.null(survey.data)) {
+    vtable::st(survey.data, out = "kable")
+  }
+}
 
-## -----------------------------------------------------------------------------
-library(compareGroups)
-createTable(compareGroups(Female ~ . -Date, data = survey.data))
+## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+#  library(compareGroups)
+#  createTable(compareGroups(Female ~ . -Date, data = survey.data))
+
+## ---- eval = TRUE, echo = FALSE-----------------------------------------------
+if (exists("survey.data")) {
+  if (!is.null(survey.data)) {
+    library(compareGroups)
+    createTable(compareGroups(Female ~ . -Date, data = survey.data))
+  }
+}
 
