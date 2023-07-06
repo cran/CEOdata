@@ -339,7 +339,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Using the CEOdata package</h1>
 <h4 class="author">Xavier Fernández-i-Marín</h4>
-<h4 class="date">17/05/2023 - Version 1.3.1</h4>
+<h4 class="date">06/07/2023 - Version 1.3.1.1</h4>
 
 
 
@@ -369,9 +369,9 @@ data gathered using the <code>CEOdata()</code> function.</li>
 Barometers, since 2017, providing easy access to the following number of
 responses and variables:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">dim</span>(d)</span></code></pre></div>
-<pre><code>## [1] 41838  1163</code></pre>
+<pre><code>## [1] 43838  1231</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>d</span></code></pre></div>
-<pre><code>## # A tibble: 41,838 × 1,163
+<pre><code>## # A tibble: 43,838 × 1,231
 ##    PONDERA ORDRECINE ORDRE_REVISADA   REO METODOLOGIA BOP_NUM    ANY   MES   DIA
 ##      &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ##  1    1.86         1             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
@@ -381,42 +381,42 @@ responses and variables:</p>
 ##  5    1.86         5             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
 ##  6    1.86         6             NA   746 &lt;NA&gt;        Març 14…  2014     3    28
 ##  7    1.86         7             NA   746 &lt;NA&gt;        Març 14…  2014     3     3
-##  8    1.86         8             NA   746 &lt;NA&gt;        Març 14…  2014     3    25
-##  9    1.86         9             NA   746 &lt;NA&gt;        Març 14…  2014     3     7
+##  8    1.86         9             NA   746 &lt;NA&gt;        Març 14…  2014     3     7
+##  9    1.86         8             NA   746 &lt;NA&gt;        Març 14…  2014     3    25
 ## 10    1.86        10             NA   746 &lt;NA&gt;        Març 14…  2014     3    27
-## # ℹ 41,828 more rows
-## # ℹ 1,154 more variables: HORA_INI &lt;time&gt;, HORA_FIN &lt;time&gt;, DURADA &lt;dbl&gt;,
-## #   FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;,
-## #   ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
+## # ℹ 43,828 more rows
+## # ℹ 1,222 more variables: HORA_INI &lt;time&gt;, HORA_FIN &lt;time&gt;, DATA_INI &lt;date&gt;,
+## #   DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;, FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;,
+## #   ENQUESTADOR_SEXE &lt;fct&gt;, ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
 ## #   ENQUESTADOR_NACIONALITAT &lt;fct&gt;, NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;,
-## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;,
-## #   SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
+## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER_21 &lt;dbl&gt;,
+## #   ID_RUTA &lt;dbl&gt;, SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">names</span>(d)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;PONDERA&quot;                  &quot;ORDRECINE&quot;               
 ##  [3] &quot;ORDRE_REVISADA&quot;           &quot;REO&quot;                     
 ##  [5] &quot;METODOLOGIA&quot;              &quot;BOP_NUM&quot;                 
 ##  [7] &quot;ANY&quot;                      &quot;MES&quot;                     
 ##  [9] &quot;DIA&quot;                      &quot;HORA_INI&quot;                
-## [11] &quot;HORA_FIN&quot;                 &quot;DURADA&quot;                  
-## [13] &quot;FASE&quot;                     &quot;ENQUESTADOR_CODI&quot;        
-## [15] &quot;ENQUESTADOR_SEXE&quot;         &quot;ENQUESTADOR_EDAT&quot;        
-## [17] &quot;ENQUESTADOR_ESTUDIS&quot;      &quot;ENQUESTADOR_NACIONALITAT&quot;
-## [19] &quot;NUM_QUEST_CAMP&quot;           &quot;PROVINCIA&quot;               
-## [21] &quot;HABITAT&quot;                  &quot;MUNICIPI&quot;                
-## [23] &quot;COMARCA&quot;                  &quot;CLUSTER&quot;                 
-## [25] &quot;ID_RUTA&quot;                  &quot;SECCIO_TEORICA&quot;          
-## [27] &quot;CONF_SECC&quot;                &quot;SECCIO_REAL&quot;             
-## [29] &quot;DOMICILI_PARTICULAR&quot;      &quot;LLENGUA_ENQUESTA&quot;        
-## [31] &quot;PADRO&quot;                    &quot;RESIDENCIA&quot;              
-## [33] &quot;LLENGUA_SISTEMA&quot;          &quot;CIUTADANIA&quot;              
-## [35] &quot;GENERE&quot;                   &quot;GENERE_LITERALS&quot;         
-## [37] &quot;SEXE&quot;                     &quot;EDAT&quot;                    
-## [39] &quot;EDAT_GR&quot;                  &quot;EDAT_CEO&quot;                
-## [41] &quot;LLOC_NAIX&quot;                &quot;HORA_PRIMERA_PREGUNTA&quot;   
-## [43] &quot;GRAVACIO&quot;                 &quot;TIPUS_GRAV&quot;              
-## [45] &quot;PRE_PROBLEMES&quot;            &quot;PROBLEMES_LITERALS&quot;      
-## [47] &quot;PROBLEMES_R_1&quot;            &quot;PROBLEMES_R_2&quot;           
-## [49] &quot;PROBLEMES_R_3&quot;            &quot;PROBLEMES_R_4&quot;</code></pre>
+## [11] &quot;HORA_FIN&quot;                 &quot;DATA_INI&quot;                
+## [13] &quot;DATA_FIN&quot;                 &quot;DURADA&quot;                  
+## [15] &quot;FASE&quot;                     &quot;ENQUESTADOR_CODI&quot;        
+## [17] &quot;ENQUESTADOR_SEXE&quot;         &quot;ENQUESTADOR_EDAT&quot;        
+## [19] &quot;ENQUESTADOR_ESTUDIS&quot;      &quot;ENQUESTADOR_NACIONALITAT&quot;
+## [21] &quot;NUM_QUEST_CAMP&quot;           &quot;PROVINCIA&quot;               
+## [23] &quot;HABITAT&quot;                  &quot;MUNICIPI&quot;                
+## [25] &quot;COMARCA&quot;                  &quot;CLUSTER_21&quot;              
+## [27] &quot;ID_RUTA&quot;                  &quot;SECCIO_TEORICA&quot;          
+## [29] &quot;CONF_SECC&quot;                &quot;SECCIO_REAL&quot;             
+## [31] &quot;DOMICILI_PARTICULAR&quot;      &quot;LLENGUA_ENQUESTA&quot;        
+## [33] &quot;PADRO&quot;                    &quot;RESIDENCIA&quot;              
+## [35] &quot;LLENGUA_SISTEMA&quot;          &quot;CIUTADANIA&quot;              
+## [37] &quot;GENERE&quot;                   &quot;GENERE_LITERALS&quot;         
+## [39] &quot;SEXE&quot;                     &quot;EDAT&quot;                    
+## [41] &quot;EDAT_GR&quot;                  &quot;EDAT_CEO&quot;                
+## [43] &quot;LLOC_NAIX&quot;                &quot;HORA_PRIMERA_PREGUNTA&quot;   
+## [45] &quot;GRAVACIO&quot;                 &quot;TIPUS_GRAV&quot;              
+## [47] &quot;PRE_PROBLEMES&quot;            &quot;PROBLEMES_LITERALS&quot;      
+## [49] &quot;PROBLEMES_R_1&quot;            &quot;PROBLEMES_R_2&quot;</code></pre>
 <p>But default <code>CEOdata()</code> transforms the gathered data into
 pure-R format (labelled SPSS variables are converted into factors). If
 you want to use <code>haven_labelled</code> variables as provided by the
@@ -475,7 +475,7 @@ using this arguments, not other studies.</p>
 <pre><code>## Converting the original data into R. This may take a while.</code></pre>
 <pre><code>## Post-processing the data. This may take a while.</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>b2019</span></code></pre></div>
-<pre><code>## # A tibble: 4,500 × 1,163
+<pre><code>## # A tibble: 4,500 × 1,231
 ##    PONDERA ORDRECINE ORDRE_REVISADA   REO METODOLOGIA BOP_NUM    ANY   MES   DIA
 ##      &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ##  1       1     23339             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
@@ -489,12 +489,12 @@ using this arguments, not other studies.</p>
 ##  9       1     23347             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
 ## 10       1     23348             NA   919 &lt;NA&gt;        Març 19…  2019     3     4
 ## # ℹ 4,490 more rows
-## # ℹ 1,154 more variables: HORA_INI &lt;time&gt;, HORA_FIN &lt;time&gt;, DURADA &lt;dbl&gt;,
-## #   FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;, ENQUESTADOR_SEXE &lt;fct&gt;,
-## #   ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
+## # ℹ 1,222 more variables: HORA_INI &lt;time&gt;, HORA_FIN &lt;time&gt;, DATA_INI &lt;date&gt;,
+## #   DATA_FIN &lt;date&gt;, DURADA &lt;dbl&gt;, FASE &lt;fct&gt;, ENQUESTADOR_CODI &lt;dbl&gt;,
+## #   ENQUESTADOR_SEXE &lt;fct&gt;, ENQUESTADOR_EDAT &lt;dbl&gt;, ENQUESTADOR_ESTUDIS &lt;fct&gt;,
 ## #   ENQUESTADOR_NACIONALITAT &lt;fct&gt;, NUM_QUEST_CAMP &lt;dbl&gt;, PROVINCIA &lt;fct&gt;,
-## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER &lt;dbl&gt;, ID_RUTA &lt;dbl&gt;,
-## #   SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
+## #   HABITAT &lt;fct&gt;, MUNICIPI &lt;fct&gt;, COMARCA &lt;fct&gt;, CLUSTER_21 &lt;dbl&gt;,
+## #   ID_RUTA &lt;dbl&gt;, SECCIO_TEORICA &lt;dbl&gt;, CONF_SECC &lt;fct&gt;, SECCIO_REAL &lt;dbl&gt;, …</code></pre>
 </div>
 <div id="extra-variables" class="section level2">
 <h2>Extra variables</h2>
@@ -505,8 +505,8 @@ In that case, 28 is used. These variables appear at the end of the
 dataset and can be distinguished from the original CEO variables because
 only the first letter is capitalized.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">names</span>(d))</span></code></pre></div>
-<pre><code>## [1] &quot;CIRCUIT_1050_1&quot; &quot;CIRCUIT_1050_2&quot; &quot;CIRCUIT_1050_3&quot; &quot;CIRCUIT_1050_4&quot;
-## [5] &quot;CIRCUIT_1050_5&quot; &quot;Data&quot;</code></pre>
+<pre><code>## [1] &quot;CIRCUIT_1050_4&quot; &quot;CIRCUIT_1050_5&quot; &quot;CIRCUIT_1061_1&quot; &quot;CIRCUIT_1061_2&quot;
+## [5] &quot;CIRCUIT_1061_3&quot; &quot;Data&quot;</code></pre>
 <p>In case of desiring all variable names to be lowercase, one can
 simply convert them with <code>tolower()</code>:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>d.lowercase <span class="ot">&lt;-</span> d</span>
@@ -524,20 +524,20 @@ metadata published by the center, in a transparent way, and caching its
 content so that any subsequent calls in the same <code>R</code> session
 do not need to download it again.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">CEOmeta</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 1,193 × 28
+<pre><code>## # A tibble: 1,201 × 28
 ##    REO   `Titol enquesta`                  `Titol estudi` `Metodologia enquesta`
 ##    &lt;fct&gt; &lt;chr&gt;                             &lt;chr&gt;          &lt;fct&gt;                 
-##  1 1046  &quot;Enquesta de satisfacció dels us… &quot;Enquesta de … quantitativa          
-##  2 1045  &quot;Avaluació del servei d&#39;atenció … &quot;Avaluació de… quantitativa          
-##  3 1044  &quot;Enquesta de valoració del Gover… &quot;Enquesta de … quantitativa          
-##  4 1043  &quot;La corrupció a Catalunya: perce… &quot;La corrupció… quantitativa          
-##  5 1042  &quot;La corrupció a Catalunya: perce… &quot;La corrupció… quantitativa          
-##  6 1041  &quot;Enquesta sobre ètica a l&#39;Admini… &quot;Enquesta sob… quantitativa          
-##  7 1040  &quot;Posttest qualitatiu de la campa… &quot;Posttest qua… qualitativa           
-##  8 1039  &quot;Baròmetre de seguretat alimentà… &quot;Baròmetre de… quantitativa          
-##  9 1038  &quot;Posttest de la campanya de cons… &quot;Posttest de … qualitativa           
-## 10 1037  &quot;Posttest qualitatiu de la campa… &quot;Posttest qua… qualitativa           
-## # ℹ 1,183 more rows
+##  1 1051  Índex de Satisfacció del Client … Índex de Sati… quantitativa          
+##  2 1050  Baròmetre d&#39;Opinió Política (BOP… Baròmetre d&#39;O… quantitativa          
+##  3 1049  Enquesta sobre les prioritats en… Enquesta sobr… quantitativa          
+##  4 1048  Enquesta sociopolítica. 2022      Enquesta soci… quantitativa          
+##  5 1047  Enquesta sobre la percepció de l… Enquesta sobr… quantitativa          
+##  6 1046  Enquesta de satisfacció dels usu… Enquesta de s… quantitativa          
+##  7 1045  Avaluació del servei d&#39;atenció c… Avaluació del… quantitativa          
+##  8 1044  Enquesta de valoració del Govern… Enquesta de v… quantitativa          
+##  9 1043  La corrupció a Catalunya: percep… La corrupció … quantitativa          
+## 10 1042  La corrupció a Catalunya: percep… La corrupció … quantitativa          
+## # ℹ 1,191 more rows
 ## # ℹ 24 more variables: `Metode de recollida de dades` &lt;fct&gt;, Objectius &lt;chr&gt;,
 ## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
 ## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
@@ -624,20 +624,20 @@ studies returned.</p>
 Internet to get the data:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">CEOmeta</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Metode de recollida de dades</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;internet&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 42 × 28
+<pre><code>## # A tibble: 49 × 28
 ##    REO   `Titol enquesta`                  `Titol estudi` `Metodologia enquesta`
 ##    &lt;fct&gt; &lt;chr&gt;                             &lt;chr&gt;          &lt;fct&gt;                 
-##  1 1041  Enquesta sobre ètica a l&#39;Adminis… Enquesta sobr… quantitativa          
-##  2 1020  Polarització i convivència a Esp… Polarització … quantitativa          
-##  3 1018  Enquesta de Satisfacció dels Ser… Enquesta de S… quantitativa          
-##  4 1016  Enquesta a ens locals sobre polí… Enquesta a en… quantitativa          
-##  5 1010  Enquesta metodològica i d&#39;actitu… Enquesta meto… quantitativa          
-##  6 1000  Enquesta panel sobre valors i CO… Enquesta pane… quantitativa          
-##  7 995   Enquesta de satisfacció dels ser… Enquesta de s… quantitativa          
-##  8 993   Enquesta de satisfacció dels ser… Enquesta de s… quantitativa          
-##  9 989   Enquesta de satisfacció de l&#39;usu… Enquesta de s… quantitativa          
-## 10 969   Estudi de percepció, experiència… Estudi de per… quantitativa          
-## # ℹ 32 more rows
+##  1 1049  Enquesta sobre les prioritats en… Enquesta sobr… quantitativa          
+##  2 1047  Enquesta sobre la percepció de l… Enquesta sobr… quantitativa          
+##  3 1041  Enquesta sobre ètica a l&#39;Adminis… Enquesta sobr… quantitativa          
+##  4 1020  Polarització i convivència a Esp… Polarització … quantitativa          
+##  5 1018  Enquesta de Satisfacció dels Ser… Enquesta de S… quantitativa          
+##  6 1016  Enquesta a ens locals sobre polí… Enquesta a en… quantitativa          
+##  7 1010  Enquesta metodològica i d&#39;actitu… Enquesta meto… quantitativa          
+##  8 1000  Enquesta panel sobre valors i CO… Enquesta pane… quantitativa          
+##  9 995   Enquesta de satisfacció dels ser… Enquesta de s… quantitativa          
+## 10 993   Enquesta de satisfacció dels ser… Enquesta de s… quantitativa          
+## # ℹ 39 more rows
 ## # ℹ 24 more variables: `Metode de recollida de dades` &lt;fct&gt;, Objectius &lt;chr&gt;,
 ## #   `Ambit territorial` &lt;fct&gt;, Cost &lt;dbl&gt;, `Promotors enquesta` &lt;chr&gt;,
 ## #   `Executors enquesta` &lt;chr&gt;, `Promotors estudi` &lt;chr&gt;,
@@ -727,7 +727,7 @@ labels</h1>
 value labels. By default it provides the variable labels in a tidy
 object:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d)  <span class="co"># equivalent to CEOsearch(d, where = &quot;variables&quot;)</span></span></code></pre></div>
-<pre><code>## # A tibble: 1,163 × 2
+<pre><code>## # A tibble: 1,231 × 2
 ##    Variable       Label                                                      
 ##    &lt;chr&gt;          &lt;chr&gt;                                                      
 ##  1 PONDERA        Coeficients de ponderació                                  
@@ -740,13 +740,13 @@ object:</p>
 ##  8 MES            Mes de realització del baròmetre                           
 ##  9 DIA            Dia                                                        
 ## 10 HORA_INI       Hora d&#39;inici de l&#39;entrevista (variable anonimitzada)       
-## # ℹ 1,153 more rows</code></pre>
+## # ℹ 1,221 more rows</code></pre>
 <p>Equivalently, the use of <code>where = &quot;values&quot;</code> provides with
 a tidy object containing the value labels. Notice that in this case the
 variable names are repeated to accommodate each of the different value
 labels.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d, <span class="at">where =</span> <span class="st">&quot;values&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 16,465 × 2
+<pre><code>## # A tibble: 16,354 × 2
 ##    Variable    Value        
 ##    &lt;fct&gt;       &lt;fct&gt;        
 ##  1 METODOLOGIA Presencial   
@@ -759,7 +759,7 @@ labels.</p>
 ##  8 BOP_NUM     Oct. 15 -804 
 ##  9 BOP_NUM     Feb. 16 -816 
 ## 10 BOP_NUM     Juny 16 -826 
-## # ℹ 16,455 more rows</code></pre>
+## # ℹ 16,344 more rows</code></pre>
 <p>Just like with the <code>CEOmeta()</code>, <code>CEOsearch()</code>
 has a simple built-in search facility that allows to retrieve only the
 rows that match a specific keyword(s). In the following example, we
@@ -819,7 +819,7 @@ object using a combination of <code>join</code> and
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">CEOsearch</span>(d) <span class="sc">|&gt;</span></span>
 <span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">CEOsearch</span>(d, <span class="at">where =</span> <span class="st">&quot;values&quot;</span>))</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(Variable)`</code></pre>
-<pre><code>## # A tibble: 16,562 × 3
+<pre><code>## # A tibble: 16,462 × 3
 ##    Variable       Label                                                    Value
 ##    &lt;chr&gt;          &lt;chr&gt;                                                    &lt;fct&gt;
 ##  1 PONDERA        Coeficients de ponderació                                &lt;NA&gt; 
@@ -832,7 +832,7 @@ object using a combination of <code>join</code> and
 ##  8 BOP_NUM        Número d&#39;ordre del baròmetre                             Març…
 ##  9 BOP_NUM        Número d&#39;ordre del baròmetre                             Oct.…
 ## 10 BOP_NUM        Número d&#39;ordre del baròmetre                             Feb …
-## # ℹ 16,552 more rows</code></pre>
+## # ℹ 16,452 more rows</code></pre>
 </div>
 <div id="development-and-acknowledgement" class="section level1">
 <h1>Development and acknowledgement</h1>
